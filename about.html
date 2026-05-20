@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" id="root" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — Mohd Arsh</title>
+  <meta name="description" content="Backend engineer and AI builder based in Mumbai. 3+ years building SaaS and LLM tools.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/about.css">
+  <link rel="icon" type="image/png" href="assets/images/arsh.png">
+</head>
+<body>
+
+<div class="about-header-actions">
+  <button class="dark-toggle" onclick="toggleDark()" aria-label="Toggle dark mode">
+    <svg id="dark-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path></svg>
+    <span class="toggle-tooltip" id="dark-label">SWITCH TO DARK MODE</span>
+  </button>
+  <a href="index.html" class="about-close-btn" aria-label="Back to home">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </a>
+</div>
+
+<main>
+  <div class="page-wrapper">
+
+    <div class="about-grid reveal">
+      <!-- LEFT -->
+      <div>
+        <p class="about-eyebrow">About</p>
+        <!-- ── Name + headline ── -->
+        <h1 class="about-h1">Hello, I'm Arsh<span class="accent">.</span></h1>
+
+        <!-- ── Bio paragraphs ── -->
+        <p class="bio-p" >
+          I'm a backend engineer and AI builder based in Mumbai. I spend my time writing
+          Django APIs, designing Celery pipelines, and wiring LLMs into production systems — always
+          backend-first, always build-to-learn.
+        </p>
+        <p class="bio-p">
+          Currently building CvExtractor, a multi-tenant SaaS for automated, batch CV parsing. The interesting 
+          problems: managing Celery chord orchestration across 100-file pipelines, strict Pydantic v2 
+          validation using Gemini models and Google Vision, and secure per-tenant field isolation
+        </p>
+        <p class="bio-p" >
+          Before that, I built Ghar Gift, a property management SaaS for landlords. 
+          It features comprehensive tenant management, automated WhatsApp billing alerts via Whapi, 
+          EdDSA auth, and a scalable model hierarchy (Owner → Property → Tenant) for
+          multi-property portfolios.
+        </p>
+        <p class="bio-p" >
+          I'm also deep into C++ concurrency and OS internals on the systems side, and RAG, embeddings,
+          and fine-tuning on the AI side. Both tracks are pursued the same way: ship something real with them.
+        </p>
+        <p class="bio-p" >
+          When I'm off my laptop, you'll find me in the gym, wandering with friends,
+          or deep in a novel. And somewhere in between, falling down rabbit holes about
+          time dilation — how time bends differently depending on gravity, velocity,
+          where you are in the universe. The kind of thing that makes you feel small
+          and curious at the same time.
+        </p>
+      </div>
+
+      <!-- RIGHT: photo stack (5 images, click/drag to cycle) -->
+      <div class="photo-stack-outer">
+        <div class="photo-stack" id="photoStack">
+          <div class="photo-card" data-index="0">
+            <img src="./assets/images/culturalday.jpg" alt="Cultural Day at college">
+            <p class="photo-caption">Cultural Day Fits.</p>
+          </div>
+          <div class="photo-card" data-index="1">
+            <img src="./assets/images/lastlunch.jpg" alt="Last lunch">
+            <p class="photo-caption">The last shared table.</p>
+          </div>
+          <div class="photo-card" data-index="2">
+            <img src="./assets/images/projectteam.jpg" alt="Final year project">
+            <p class="photo-caption">Shipped, Final year project, wrapped.</p>
+          </div>
+          <div class="photo-card" data-index="3">
+            <img src="./assets/images/blackday.jpg" alt="Black day">
+            <p class="photo-caption">Black day edition.</p>
+          </div>
+          <div class="photo-card" data-index="4">
+            <img src="./assets/images/jamamasjid.jpg" alt="Jama Masjid">
+            <p class="photo-caption">Somewhere quiet.</p>
+          </div>
+        </div>
+        <p class="stack-hint">click or drag to cycle through</p>
+        <div class="stack-dots" id="stackDots">
+          <div class="stack-dot"></div>
+          <div class="stack-dot"></div>
+          <div class="stack-dot"></div>
+          <div class="stack-dot"></div>
+          <div class="stack-dot"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience 
+    <div class="section-divider reveal reveal-d1">
+      <div class="exp-grid">
+        <div style="padding-top:24px;">
+          <h2 class="exp-h2">Experience</h2>
+          <p class="exp-sub">3+ years building products and pipelines.</p>
+        </div>
+        <div>
+
+          <div class="exp-item">
+            <div class="exp-logo">
+              <span class="exp-logo-text">CVE</span>
+            </div>
+            <div>
+              <div class="exp-row">
+                <span class="exp-name">CvExtractor</span>
+                <span class="exp-dates">2024–Present</span>
+              </div>
+              <div class="exp-role">Founder &amp; Builder — Multi-tenant CV parsing SaaS</div>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-logo">
+              <span class="exp-logo-text">GG</span>
+            </div>
+            <div>
+              <div class="exp-row">
+                <span class="exp-name">Ghar Gift</span>
+                <span class="exp-dates">2023–2024</span>
+              </div>
+              <div class="exp-role">Founder &amp; Builder — PG/hostel management SaaS</div>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-logo">
+              <span class="exp-logo-text">MG<br>HR</span>
+            </div>
+            <div>
+              <div class="exp-row">
+                <span class="exp-name">MG HR / Jobs Sin</span>
+                <span class="exp-dates">2023–Present</span>
+              </div>
+              <div class="exp-role">Web Manager — HR consultancy properties, content automation</div>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-logo">
+              <span class="exp-logo-text">NR</span>
+            </div>
+            <div>
+              <div class="exp-row">
+                <span class="exp-name">NextRead</span>
+                <span class="exp-dates">2023</span>
+              </div>
+              <div class="exp-role">Builder — Semantic book recommender (LangChain, Chroma, HuggingFace)</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div> -->
+
+  </div>
+</main>
+
+<footer>
+  <div class="page-wrapper footer-inner">
+    <span class="footer-txt">© 2026 Mohd Arsh</span>
+    <span class="footer-txt">Mumbai, India</span>
+  </div>
+</footer>
+
+<script src="assets/js/common.js"></script>
+<script src="assets/js/about.js"></script>
+</body>
+</html>
