@@ -1,4 +1,4 @@
-# [mohdarsh.dev](https://mohdarsh.dev)
+# [<span style="color: #6b6b6b ;">🙋🏼‍♂️ Mohd Arsh</span>](https://mohdarsh.vercel.app/)
 
 I spend most of my days thinking about backend architecture and writing APIs. But when it came to building my own portfolio, I didn't want to design another heavy system. I didn't want to spin up a massive Next.js boilerplate, manage hundreds of node modules, or hide my code behind complex framework abstractions.
 
@@ -49,4 +49,4 @@ Because there is no build step or node dependencies, running this is as simple a
 ## License & Usage
 This repository is completely open-source. If you’re building your own vanilla portfolio and want to lift the photo stack logic, the dynamic bento tokens, or the custom typewriter script—go for it. Just switch out the text and make it your own.
 
-**Live at:** [mohdarsh.dev](https://mohdarsh.dev)
+**Live at:** [mohdarsh.vercel.app](https://mohdarsh.vercel.app/)
