@@ -767,31 +767,103 @@ html.dark .tool-wrapper[data-mono="true"]:hover .tool-icon {
    RESPONSIVE (Index Specific)
 ═══════════════════════════════════════ */
 @media (max-width: 768px) {
+
+  /* ── Hero ─────────────────────────────── */
   .hero-layout {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 24px;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 
   .hero-photo {
-    width: 140px;
-    height: 175px;
+    width: 160px;
+    height: 200px;
+    border-radius: 16px;
+  }
+
+  .hero-photo-wrapper {
+    order: -1; /* photo stays on top */
+  }
+
+  .hero-h1 {
+    font-size: clamp(36px, 9vw, 52px);
   }
 
   .hero-meta {
     justify-content: center;
+    flex-wrap: wrap;
   }
 
+  /* ── Bento Grid ───────────────────────── */
   .bento-row-wide,
   .bento-row-even {
     grid-template-columns: 1fr;
     min-height: auto;
   }
 
-  .built-grid-layout,
+  /* FIX: Prevent image area from collapsing to 0px on mobile */
+  .b-mock-wrap {
+    min-height: 200px;
+    flex: 0 0 auto; /* don't shrink */
+  }
+
+  .b-mock {
+    height: 200px;
+  }
+
+  .b-mock-tall {
+    height: 200px;
+  }
+
+  /* Full-width image window, no left offset on mobile */
+  .b-mock-window {
+    margin-left: 0;
+    width: 100%;
+    border-radius: 0 0 14px 14px;
+  }
+
+  /* Slightly smaller card title so text doesn't crowd */
+  .b-card-title {
+    font-size: 17px;
+  }
+
+  .b-card-header {
+    padding: 20px 20px 0;
+  }
+
+  /* ── Building Section ─────────────────── */
+  .built-grid-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .tool-icons-row {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .built-item {
+    padding: 16px 12px;
+    margin: 0 -12px;
+  }
+
+  .built-desc {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* ── Contact Section ──────────────────── */
   .contact-layout {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 24px;
+  }
+
+  .contact-link {
+    font-size: 15px;
+    padding: 14px 0;
   }
 }
 .b-card-img-extractly {
