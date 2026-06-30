@@ -1,501 +1,558 @@
 <!DOCTYPE html>
 <html lang="en" id="root" class="dark">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- ── title, description, og:image ── -->
   <title>Mohd Arsh</title>
-  <meta name="description" content="Backend engineer based in Mumbai. Building multi-tenant SaaS, LLM pipelines, and automation systems. Django · FastAPI · Next.js · PostgreSQL.">
+  <meta name="description"
+    content="Backend engineer based in Mumbai. Building multi-tenant SaaS, LLM pipelines, and automation systems. Django · FastAPI · Next.js · PostgreSQL.">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Mohd Arsh">
-  <meta property="og:description" content="Backend engineer based in Mumbai. Building multi-tenant SaaS, LLM pipelines, and automation systems.">
+  <meta property="og:description"
+    content="Backend engineer based in Mumbai. Building multi-tenant SaaS, LLM pipelines, and automation systems.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mohdarsh.dev">
-  <meta property="og:image" content="https://mohdarsh.dev/assets/images/arsh.png">
+  <meta property="og:image" content="https://mohdarsh.dev/assets/images/arsh.webp">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
 
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/index.css">
-  <link rel="icon" type="image/png" href="assets/images/arsh.png">
+  <link rel="icon" type="image/png" href="assets/images/arsh.webp">
 </head>
 
 <body>
 
-<!-- ════════════════════════════════════════
+  <!-- ════════════════════════════════════════
      NAV
 ════════════════════════════════════════ -->
-<nav id="site-nav">
-  <div class="page-wrapper nav-inner">
-    <a href="#" class="nav-name">Mohd Arsh</a>
+  <nav id="site-nav">
+    <div class="page-wrapper nav-inner">
+      <a href="#" class="nav-name">Mohd Arsh</a>
 
-    <div class="nav-right">
-      <a class="nav-link" href="about.html">About</a>
-      <div class="nav-links-desktop">
-        <a href="#work" class="nav-link">Work</a>
-        <a href="#building" class="nav-link">Building</a>
-        <a href="#contact" class="nav-link">Contact</a>
+      <div class="nav-right">
+        <a class="nav-link" href="about.html">About</a>
+        <div class="nav-links-desktop">
+          <a href="#work" class="nav-link">Work</a>
+          <a href="#building" class="nav-link">Building</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <button class="dark-toggle" onclick="toggleDark()" aria-label="Toggle dark mode">
+          <svg id="dark-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401">
+            </path>
+          </svg>
+          <span class="toggle-tooltip" id="dark-label">SWITCH TO DARK MODE</span>
+        </button>
+        <button class="hamburger" onclick="toggleMobile()" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <button class="dark-toggle" onclick="toggleDark()" aria-label="Toggle dark mode">
-        <svg id="dark-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path></svg>
-        <span class="toggle-tooltip" id="dark-label">SWITCH TO DARK MODE</span>
-      </button>
-      <button class="hamburger" onclick="toggleMobile()" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
     </div>
+  </nav>
+
+  <!-- mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="about.html" class="mobile-menu-link">About</a>
+    <a href="#work" class="mobile-menu-link" onclick="toggleMobile()">Work</a>
+    <a href="#building" class="mobile-menu-link" onclick="toggleMobile()">Building</a>
+    <a href="#contact" class="mobile-menu-link" onclick="toggleMobile()">Contact</a>
   </div>
-</nav>
 
-<!-- mobile menu -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="about.html" class="mobile-menu-link">About</a>
-  <a href="#work" class="mobile-menu-link" onclick="toggleMobile()">Work</a>
-  <a href="#building" class="mobile-menu-link" onclick="toggleMobile()">Building</a>
-  <a href="#contact" class="mobile-menu-link" onclick="toggleMobile()">Contact</a>
-</div>
+  <main>
+    <div class="page-wrapper" style="padding-top: 52px;">
 
-<main>
-<div class="page-wrapper" style="padding-top: 52px;">
-
-  <!-- ════════════════════════════════════════
+      <!-- ════════════════════════════════════════
        HERO
   ════════════════════════════════════════ -->
-  <section id="hero">
-    <div class="hero-layout">
+      <section id="hero">
+        <div class="hero-layout">
 
-      <!-- ── photo ── -->
-      <div class="hero-photo-wrapper reveal">
-        <img
-          src="assets/images/arsh.png"
-          alt="Mohd Arsh"
-          class="hero-photo"
-        >
-      </div>
+          <!-- ── photo ── -->
+          <div class="hero-photo-wrapper reveal">
+            <img src="assets/images/arsh.webp" alt="Mohd Arsh" class="hero-photo">
+          </div>
 
-      <div class="hero-text">
-        <!-- ── role eyebrow ── -->
-        <div class="hero-eyebrow reveal reveal-delay-1">Backend Engineer + AI Builder</div>
+          <div class="hero-text">
+            <!-- ── role eyebrow ── -->
+            <div class="hero-eyebrow reveal reveal-delay-1">Backend Engineer + AI Builder</div>
 
-        <!-- ── headline ── -->
-        <h1 class="hero-h1 reveal reveal-delay-2">
-          I build the backend<br>that makes AI work<span class="accent">.</span>
-        </h1>
+            <!-- ── headline ── -->
+            <h1 class="hero-h1 reveal reveal-delay-2">
+              I build the backend<br>that makes AI work<span class="accent">.</span>
+            </h1>
 
-        <!-- ── bio blurb ── -->
-        <p class="hero-body reveal reveal-delay-3">
-          Based in Mumbai. Building multi-tenant SaaS, LLM-powered pipelines, and
-          automation systems. Currently shipping
-          <span class="typewriter-wrap">
-            <span class="typewriter-ghost">CvExtractor.</span>
-            <span class="typewriter-text" id="typewriter"></span>
-          </span>
-        </p>
+            <!-- ── bio blurb ── -->
+            <p class="hero-body reveal reveal-delay-3">
+              Based in Mumbai. Building multi-tenant SaaS, LLM-powered pipelines, and
+              automation systems. Currently shipping
+              <span class="typewriter-wrap">
+                <span class="typewriter-ghost">Extractly.</span>
+                <span class="typewriter-text" id="typewriter"></span>
+              </span>
+            </p>
 
-        <div class="hero-meta reveal reveal-delay-4">
-          <span class="hero-meta-item">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
-            </svg>
-            Mumbai, India
-          </span>
-          <span class="hero-meta-sep">·</span>
-          <!-- ── email ── -->
-          <a href="mailto:arshhansari27@gmail.com" class="hero-meta-item" style="color: inherit;">arshhansari27@gmail.com</a>
+            <div class="hero-meta reveal reveal-delay-4">
+              <span class="hero-meta-item">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                Mumbai, India
+              </span>
+              <span class="hero-meta-sep">·</span>
+              <!-- ── email ── -->
+              <a href="mailto:arshhansari27@gmail.com" class="hero-meta-item"
+                style="color: inherit;">arshhansari27@gmail.com</a>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- ════════════════════════════════════════
+      <!-- ════════════════════════════════════════
        SELECTED WORK
   ════════════════════════════════════════ -->
-  <section id="work" style="padding-top: 0; padding-bottom: 80px;">
-    <h2 class="section-h2 reveal">Selected work</h2>
+      <section id="work" style="padding-top: 0; padding-bottom: 80px;">
+        <h2 class="section-h2 reveal">Selected work</h2>
 
-    <div class="bento-rows">
+        <div class="bento-rows">
 
-      <!-- Row 1: wide + narrow -->
-      <div class="bento-row-wide">
+          <!-- Row 1: wide + narrow -->
+          <div class="bento-row-wide">
 
-        <!-- Card 1: CvExtractor -->
-        <!-- ── href → case study page ── -->
-        <div class="reveal" style="height:100%;">
-          <a href="#" class="b-card" style="--eyebrow-color: #1E2238;">
-            <div class="b-card-header">
-              <div style="min-width:0;">
-                <div class="b-card-eyebrow">
-                  <span class="eyebrow-skill">MULTI-TENANT SAAS</span>
-                  <span style="color:var(--ink); margin:0 0.4em;">·</span>
-                  <span class="eyebrow-co">CVEXTRACTOR</span>
-                </div>
-                <!-- ── Card title ── -->
-                <h3 class="b-card-title">CV parsing pipeline that handles 500-file batches without breaking a sweat.</h3>
-              </div>
-              <div class="b-expand">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="color:var(--ink);">
-                  <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-            </div>
-            <!-- Mock: code snippet -->
-            <div class="b-mock-wrap">
-              <div class="b-mock-fade"></div>
-              <div class="b-mock">
-                <div class="b-mock-code">
-<span class="code-cm"># Celery chord — batch 100 files × 10/task</span><br>
-<span class="code-fn">@shared_task</span><br>
-<span class="code-kw">def</span> <span class="code-fn">extract_batch</span>(file_ids, job_id):<br>
-&nbsp;&nbsp;tasks = chord(<br>
-&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code-fn">extract_single</span>.s(fid) <span class="code-kw">for</span> fid <span class="code-kw">in</span> file_ids],<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-fn">on_batch_done</span>.s(job_id)<br>
-&nbsp;&nbsp;)<br>
-&nbsp;&nbsp;<span class="code-kw">return</span> tasks.delay()<br><br>
-<span class="code-cm"># GPT-4o field extraction w/ Pydantic v2</span><br>
-<span class="code-kw">class</span> <span class="code-cls">CVFields</span>(BaseModel):<br>
-&nbsp;&nbsp;name: <span class="code-str">str</span><br>
-&nbsp;&nbsp;email: <span class="code-str">str | None</span><br>
-&nbsp;&nbsp;skills: <span class="code-str">list[str]</span><br>
-&nbsp;&nbsp;experience_years: <span class="code-num">int | None</span>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Card 2: Ghar Gift -->
-        <div class="reveal reveal-delay-1" style="height:100%;">
-          <a href="#" class="b-card" style="--eyebrow-color: #1b5e20;">
-            <div class="b-card-header">
-              <div style="min-width:0;">
-                <div class="b-card-eyebrow">
-                  <span class="eyebrow-skill">PRODUCT DESIGN + BACKEND</span>
-                  <span style="color:var(--ink); margin:0 0.4em;">·</span>
-                  <span class="eyebrow-co">GHAR GIFT</span>
-                </div>
-                <h3 class="b-card-title" style="max-width:360px;">SaaS for Indian PG owners — tenant management, billing, and WhatsApp alerts.</h3>
-              </div>
-              <div class="b-expand">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="color:var(--ink);">
-                  <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-            </div>
-            <div class="b-mock-wrap">
-              <div class="b-mock-fade"></div>
-              <div class="b-mock b-mock-tall">
-                <!-- Mock: dashboard table UI -->
-                <div class="b-mock-ui">
-                  <div class="mock-bar short"></div>
-                  <div class="mock-bar med" style="margin-bottom:8px;"></div>
-                  <div class="mock-table">
-                    <div class="mock-row" style="background:#e8e5df30;">
-                      <div class="mock-cell" style="height:6px;"></div>
-                      <div class="mock-cell" style="height:6px;width:60%;"></div>
-                      <div class="mock-cell blue" style="height:6px;width:70%;"></div>
-                      <div class="mock-cell green" style="height:6px;width:50%;"></div>
+            <!-- Card 1: Extractly -->
+            <!-- ── href → case study page ── -->
+            <div class="reveal" style="height:100%;">
+              <a href="extractly.html" class="b-card" style="--eyebrow-color: #0c447c;">
+                <div class="b-card-header">
+                  <div style="min-width:0;">
+                    <div class="b-card-eyebrow">
+                      <span class="eyebrow-skill">MULTI-TENANT SAAS</span>
+                      <span style="color:var(--ink); margin:0 0.4em;">·</span>
+                      <span class="eyebrow-co">EXTRACTLY</span>
                     </div>
-                    <div class="mock-row"><div class="mock-cell"></div><div class="mock-cell med"></div><div class="mock-cell green"></div><div class="mock-cell blue"></div></div>
-                    <div class="mock-row"><div class="mock-cell"></div><div class="mock-cell short"></div><div class="mock-cell blue"></div><div class="mock-cell"></div></div>
-                    <div class="mock-row"><div class="mock-cell"></div><div class="mock-cell full"></div><div class="mock-cell green"></div><div class="mock-cell blue"></div></div>
-                    <div class="mock-row"><div class="mock-cell"></div><div class="mock-cell med"></div><div class="mock-cell"></div><div class="mock-cell green"></div></div>
-                    <div class="mock-row"><div class="mock-cell"></div><div class="mock-cell short"></div><div class="mock-cell blue"></div><div class="mock-cell"></div></div>
+                    <!-- ── Card title ── -->
+                    <h3 class="b-card-title">CV parsing pipeline that handles 500-file batches without breaking a sweat.
+                    </h3>
                   </div>
-                  <div class="mock-bar full" style="margin-top:8px;"></div>
-                  <div class="mock-bar med"></div>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-
-      </div><!-- /row-wide -->
-
-      <!-- Row 2: two equal cards -->
-      <div class="bento-row-even">
-
-        <!-- Card 3: NextRead -->
-        <div class="reveal" style="height:100%;">
-          <a href="#" class="b-card" style="--eyebrow-color: #4a1942;">
-            <div class="b-card-header">
-              <div style="min-width:0;">
-                <div class="b-card-eyebrow">
-                  <span class="eyebrow-skill">RAG + SEMANTIC SEARCH</span>
-                  <span style="color:var(--ink); margin:0 0.4em;">·</span>
-                  <span class="eyebrow-co">NEXTREAD</span>
-                </div>
-                <h3 class="b-card-title">Semantic book recommender — LangChain, Chroma, HuggingFace, Gradio.</h3>
-              </div>
-              <div class="b-expand">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="color:var(--ink);">
-                  <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-            </div>
-            <div class="b-mock-wrap">
-              <div class="b-mock-fade"></div>
-              <div class="b-mock">
-                <div class="b-mock-code">
-<span class="code-cm"># Embedding + vector retrieval</span><br>
-<span class="code-kw">from</span> langchain.vectorstores <span class="code-kw">import</span> Chroma<br>
-<span class="code-kw">from</span> langchain.embeddings <span class="code-kw">import</span> HuggingFaceEmbeddings<br><br>
-embeddings = <span class="code-cls">HuggingFaceEmbeddings</span>(<br>
-&nbsp;&nbsp;model_name=<span class="code-str">"all-MiniLM-L6-v2"</span><br>
-)<br>
-db = <span class="code-cls">Chroma</span>.from_documents(docs, embeddings)<br>
-results = db.similarity_search(<br>
-&nbsp;&nbsp;<span class="code-str">"dystopian fiction with strong female lead"</span>,<br>
-&nbsp;&nbsp;k=<span class="code-num">5</span><br>
-)
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Card 4: n8n Automation -->
-        <div class="reveal reveal-delay-1" style="height:100%;">
-          <a href="#" class="b-card" style="--eyebrow-color: #0a2f4d;">
-            <div class="b-card-header">
-              <div style="min-width:0;">
-                <div class="b-card-eyebrow">
-                  <span class="eyebrow-skill">AUTOMATION + AI</span>
-                  <span style="color:var(--ink); margin:0 0.4em;">·</span>
-                  <span class="eyebrow-co">BLOTATO / N8N</span>
-                </div>
-                <h3 class="b-card-title">Social media automation — Telegram approval loop, per-platform retry, 70-node workflow.</h3>
-              </div>
-              <div class="b-expand">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="color:var(--ink);">
-                  <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-            </div>
-            <div class="b-mock-wrap">
-              <div class="b-mock-fade"></div>
-              <div class="b-mock">
-                <div class="b-mock-ui" style="gap:12px;">
-                  <!-- Mini flow diagram -->
-                  <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
-                    <div style="background:var(--rule); border-radius:6px; padding:6px 10px; font-size:10px; color:var(--mid); font-family:var(--mono);">📊 G.Sheets</div>
-                    <div style="color:var(--faint); font-size:10px;">→</div>
-                    <div style="background:var(--rule); border-radius:6px; padding:6px 10px; font-size:10px; color:var(--mid); font-family:var(--mono);">🤖 OpenAI</div>
-                    <div style="color:var(--faint); font-size:10px;">→</div>
-                    <div style="background:rgba(37,110,241,0.1); border-radius:6px; padding:6px 10px; font-size:10px; color:#256ef1; font-family:var(--mono);">✅ Telegram</div>
+                  <div class="b-expand">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="color:var(--ink);">
+                      <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
                   </div>
-                  <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
-                    <div style="background:var(--rule); border-radius:6px; padding:6px 10px; font-size:10px; color:var(--mid); font-family:var(--mono);">/approve</div>
-                    <div style="background:var(--rule); border-radius:6px; padding:6px 10px; font-size:10px; color:var(--mid); font-family:var(--mono);">/reject</div>
-                    <div style="background:var(--rule); border-radius:6px; padding:6px 10px; font-size:10px; color:var(--mid); font-family:var(--mono);">/edit_long</div>
-                  </div>
-                  <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
-                    <div style="background:rgba(34,197,94,0.1); border-radius:6px; padding:6px 10px; font-size:10px; color:#16a34a; font-family:var(--mono);">Twitter · LinkedIn</div>
-                    <div style="color:var(--faint); font-size:10px;">+ retry 2×</div>
-                  </div>
-                  <div class="mock-bar med"></div>
-                  <div class="mock-bar full"></div>
                 </div>
-              </div>
+                <!-- Mock: dashboard preview -->
+                <div class="b-mock-wrap" style="height: 220px;">
+                  <div class="b-mock-fade"></div>
+                  <div class="b-mock b-mock-window">
+                    <img src="./assets/images/extractly-Photoroom.webp" alt="Extractly automated CV parsing dashboard"
+                      class="b-card-img-extractly" loading="lazy" decoding="async">
+                  </div>
+                </div>
+              </a>
             </div>
-          </a>
-        </div>
 
-      </div><!-- /row-even -->
+            <!-- Card 2: Ghar Gift -->
+            <div class="reveal reveal-delay-1" style="height:100%;">
+              <a href="#" class="b-card" style="--eyebrow-color: #1b5e20;">
+                <div class="b-card-header">
+                  <div style="min-width:0;">
+                    <div class="b-card-eyebrow">
+                      <span class="eyebrow-skill">PRODUCT DESIGN + BACKEND</span>
+                      <span style="color:var(--ink); margin:0 0.4em;">·</span>
+                      <span class="eyebrow-co">GHAR GIFT</span>
+                    </div>
+                    <h3 class="b-card-title" style="max-width:360px;">SaaS for Indian PG owners — tenant management,
+                      billing, and WhatsApp alerts.</h3>
+                  </div>
+                  <div class="b-expand">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="color:var(--ink);">
+                      <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="b-mock-wrap">
+                  <div class="b-mock-fade"></div>
+                  <div class="b-mock b-mock-tall">
+                    <!-- Mock: dashboard table UI -->
+                    <div class="b-mock-ui">
+                      <div class="mock-bar short"></div>
+                      <div class="mock-bar med" style="margin-bottom:8px;"></div>
+                      <div class="mock-table">
+                        <div class="mock-row" style="background:#e8e5df30;">
+                          <div class="mock-cell" style="height:6px;"></div>
+                          <div class="mock-cell" style="height:6px;width:60%;"></div>
+                          <div class="mock-cell blue" style="height:6px;width:70%;"></div>
+                          <div class="mock-cell green" style="height:6px;width:50%;"></div>
+                        </div>
+                        <div class="mock-row">
+                          <div class="mock-cell"></div>
+                          <div class="mock-cell med"></div>
+                          <div class="mock-cell green"></div>
+                          <div class="mock-cell blue"></div>
+                        </div>
+                        <div class="mock-row">
+                          <div class="mock-cell"></div>
+                          <div class="mock-cell short"></div>
+                          <div class="mock-cell blue"></div>
+                          <div class="mock-cell"></div>
+                        </div>
+                        <div class="mock-row">
+                          <div class="mock-cell"></div>
+                          <div class="mock-cell full"></div>
+                          <div class="mock-cell green"></div>
+                          <div class="mock-cell blue"></div>
+                        </div>
+                        <div class="mock-row">
+                          <div class="mock-cell"></div>
+                          <div class="mock-cell med"></div>
+                          <div class="mock-cell"></div>
+                          <div class="mock-cell green"></div>
+                        </div>
+                        <div class="mock-row">
+                          <div class="mock-cell"></div>
+                          <div class="mock-cell short"></div>
+                          <div class="mock-cell blue"></div>
+                          <div class="mock-cell"></div>
+                        </div>
+                      </div>
+                      <div class="mock-bar full" style="margin-top:8px;"></div>
+                      <div class="mock-bar med"></div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
 
-    </div><!-- /bento-rows -->
-  </section>
+          </div><!-- /row-wide -->
 
-  <!-- ════════════════════════════════════════
+          <!-- Row 2: two equal cards -->
+          <div class="bento-row-even">
+
+            <!-- Card 3: NextRead -->
+            <div class="reveal" style="height:100%;">
+              <a href="#" class="b-card" style="--eyebrow-color: #4a1942;">
+                <div class="b-card-header">
+                  <div style="min-width:0;">
+                    <div class="b-card-eyebrow">
+                      <span class="eyebrow-skill">RAG + SEMANTIC SEARCH</span>
+                      <span style="color:var(--ink); margin:0 0.4em;">·</span>
+                      <span class="eyebrow-co">NEXTREAD</span>
+                    </div>
+                    <h3 class="b-card-title">Semantic book recommender — LangChain, Chroma, HuggingFace, Gradio.</h3>
+                  </div>
+                  <div class="b-expand">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="color:var(--ink);">
+                      <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="b-mock-wrap">
+                  <div class="b-mock-fade"></div>
+                  <div class="b-mock b-mock-window">
+                    <img src="./assets/images/nextread-ui.webp" alt="NextRead semantic book recommender"
+                      class="b-card-img" loading="lazy" decoding="async">
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Card 4: n8n Automation -->
+            <div class="reveal reveal-delay-1" style="height:100%;">
+              <a href="#" class="b-card" style="--eyebrow-color: #0a2f4d;">
+                <div class="b-card-header">
+                  <div style="min-width:0;">
+                    <div class="b-card-eyebrow">
+                      <span class="eyebrow-skill">AUTOMATION + AI</span>
+                      <span style="color:var(--ink); margin:0 0.4em;">·</span>
+                      <span class="eyebrow-co">BLOTATO / N8N</span>
+                    </div>
+                    <h3 class="b-card-title">Social media automation — Telegram approval loop, per-platform retry,
+                      70-node workflow.</h3>
+                  </div>
+                  <div class="b-expand">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="color:var(--ink);">
+                      <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="b-mock-wrap">
+                  <div class="b-mock-fade"></div>
+                  <div class="b-mock">
+                    <div class="b-mock-ui" style="gap:12px;">
+                      <!-- Mini flow diagram -->
+                      <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+                        <div
+                          style="background:var(--rule); border-radius:6px; padding:6px 10px; font-size:10px; color:var(--mid); font-family:var(--mono);">
+                          📊 G.Sheets</div>
+                        <div style="color:var(--faint); font-size:10px;">→</div>
+                        <div
+                          style="background:var(--rule); border-radius:6px; padding:6px 10px; font-size:10px; color:var(--mid); font-family:var(--mono);">
+                          🤖 OpenAI</div>
+                        <div style="color:var(--faint); font-size:10px;">→</div>
+                        <div
+                          style="background:rgba(37,110,241,0.1); border-radius:6px; padding:6px 10px; font-size:10px; color:#256ef1; font-family:var(--mono);">
+                          ✅ Telegram</div>
+                      </div>
+                      <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+                        <div
+                          style="background:var(--rule); border-radius:6px; padding:6px 10px; font-size:10px; color:var(--mid); font-family:var(--mono);">
+                          /approve</div>
+                        <div
+                          style="background:var(--rule); border-radius:6px; padding:6px 10px; font-size:10px; color:var(--mid); font-family:var(--mono);">
+                          /reject</div>
+                        <div
+                          style="background:var(--rule); border-radius:6px; padding:6px 10px; font-size:10px; color:var(--mid); font-family:var(--mono);">
+                          /edit_long</div>
+                      </div>
+                      <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+                        <div
+                          style="background:rgba(34,197,94,0.1); border-radius:6px; padding:6px 10px; font-size:10px; color:#16a34a; font-family:var(--mono);">
+                          Twitter · LinkedIn</div>
+                        <div style="color:var(--faint); font-size:10px;">+ retry 2×</div>
+                      </div>
+                      <div class="mock-bar med"></div>
+                      <div class="mock-bar full"></div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+          </div><!-- /row-even -->
+
+        </div><!-- /bento-rows -->
+      </section>
+
+      <!-- ════════════════════════════════════════
        BUILDING
   ════════════════════════════════════════ -->
-  <section id="building" class="section-divider">
-    <div class="built-grid-layout reveal">
-      <div style="padding-top: 24px;">
-        <h2 class="section-h2">Building</h2>
-        <p class="section-sub">Learning by shipping.</p>
+      <section id="building" class="section-divider">
+        <div class="built-grid-layout reveal">
+          <div style="padding-top: 24px;">
+            <h2 class="section-h2">Building</h2>
+            <p class="section-sub">Learning by shipping.</p>
 
-        <!-- Tool icons -->
-        <div class="tool-icons-row">
-          
-          <div class="tool-wrapper">
-            <img src="./assets/images/gnometerminal-color.svg" alt="Terminal" class="tool-icon" />
-            <span class="tool-tooltip">TERMINAL</span>
+            <!-- Tool icons -->
+            <div class="tool-icons-row">
+
+              <div class="tool-wrapper">
+                <img src="./assets/images/gnometerminal-color.svg" alt="Terminal" class="tool-icon" />
+                <span class="tool-tooltip">TERMINAL</span>
+              </div>
+
+              <div class="tool-wrapper">
+                <img src="./assets/images/claude-color.svg" alt="Claude Code" class="tool-icon" />
+                <span class="tool-tooltip">CLAUDE CODE</span>
+              </div>
+
+              <div class="tool-wrapper">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg"
+                  alt="VS Code" class="tool-icon" />
+                <span class="tool-tooltip">VS CODE</span>
+              </div>
+
+              <div class="tool-wrapper" data-mono="true">
+                <img src="./assets/images/github-color.svg" alt="GitHub" class="tool-icon" />
+                <span class="tool-tooltip">GITHUB</span>
+              </div>
+
+              <div class="tool-wrapper" data-mono="true">
+                <img src="./assets/images/vercel-color.svg" alt="Vercel" class="tool-icon" />
+                <span class="tool-tooltip">VERCEL</span>
+              </div>
+
+            </div>
           </div>
 
-          <div class="tool-wrapper">
-            <img src="./assets/images/claude-color.svg" alt="Claude Code" class="tool-icon" />
-            <span class="tool-tooltip">CLAUDE CODE</span>
-          </div>
+          <div>
+            <!-- ── CHANGE: Your projects list ── -->
 
-          <div class="tool-wrapper">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" alt="VS Code" class="tool-icon" />
-            <span class="tool-tooltip">VS CODE</span>
-          </div>
+            <!-- Project 1 -->
+            <a href="https://extractlyy.vercel.app" class="built-item">
+              <div class="built-icon" style="overflow: hidden; background: transparent;">
+                <img src="./assets/images/extractly.icon.webp" alt="Extractly logo"
+                  style="width: 100%; height: 100%; object-fit: contain; display: block; border-radius: 12px;">
+              </div>
+              <div class="built-content">
+                <div class="built-arrow-wrap">
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="color:var(--ink);">
+                    <path d="M2.5 10.5 L10.5 2.5 M6.5 2.5 L10.5 2.5 L10.5 6.5" stroke="currentColor" stroke-width="1.5"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <span class="built-name">Extractly</span>
+                <span class="built-desc">HRs upload CVs, define custom fields, get structured Excel/CSV exports.
+                  Multi-tenant with per-client field schemas, Celery chord batching (100 files × 10/task), GPT-4o +
+                  Google Vision extraction, S3 direct upload, openpyxl export at merge layer.</span>
+                <div class="built-tags">
+                  <span class="tag">Django 5 + DRF</span>
+                  <span class="tag">Celery + Redis</span>
+                  <span class="tag tag-accent">Gemini + Vision</span>
+                  <span class="tag tag-accent">Pydantic v2</span>
+                  <span class="tag">Next.js</span>
+                  <span class="tag">PostgreSQL</span>
+                </div>
+              </div>
+            </a>
 
-          <div class="tool-wrapper" data-mono="true">
-            <img src="./assets/images/github-color.svg" alt="GitHub" class="tool-icon" />
-            <span class="tool-tooltip">GITHUB</span>
-          </div>
+            <!-- Project 2 -->
+            <a href="#" class="built-item">
+              <div class="built-icon" style="background: linear-gradient(135deg, #1b5e20, #2e7d32);">
+                <span class="built-icon-text">GG</span>
+              </div>
+              <div class="built-content">
+                <div class="built-arrow-wrap">
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="color:var(--ink);">
+                    <path d="M2.5 10.5 L10.5 2.5 M6.5 2.5 L10.5 2.5 L10.5 6.5" stroke="currentColor" stroke-width="1.5"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <span class="built-name">Ghar Gift</span>
+                <span class="built-desc">SaaS for Indian PG/hostel owners. Owner → Property → Tenant model, EdDSA auth
+                  (Better Auth), WhatsApp notifications via Whapi, Cloudinary media, Celery background jobs.
+                  Feature-complete and shipped.</span>
+                <div class="built-tags">
+                  <span class="tag tag-accent">Marketplace & SaaS</span>
+                  <span class="tag">Django 5 + DRF</span>
+                  <span class="tag">Better Auth</span>
+                  <span class="tag tag-accent">Whapi</span>
+                  <span class="tag">Next.js</span>
+                  <span class="tag">Cloudinary</span>
+                </div>
+              </div>
+            </a>
 
-          <div class="tool-wrapper" data-mono="true">
-            <img src="./assets/images/vercel-color.svg" alt="Vercel" class="tool-icon" />
-            <span class="tool-tooltip">VERCEL</span>
-          </div>
+            <!-- Project 3 -->
+            <a href="https://huggingface.co/spaces/ArshAnsari/NextRead" target="_blank" class="built-item">
+              <div class="built-icon" style="overflow: hidden; background: transparent;">
+                <img src="./assets/images/nextread.icon.webp" alt="NextRead logo" style="width: 100%; height: 100%; object-fit: contain; display: block; border-radius: 12px;">
+              </div>
+              <div class="built-content">
+                <div class="built-arrow-wrap">
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="color:var(--ink);">
+                    <path d="M2.5 10.5 L10.5 2.5 M6.5 2.5 L10.5 2.5 L10.5 6.5" stroke="currentColor" stroke-width="1.5"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <span class="built-name">NextRead</span>
+                <span class="built-desc">Semantic book recommender. Describe a book you loved, get 5 embeddings-matched
+                  suggestions from a vector store of 7,000+ books. First real RAG project — where I learned that
+                  chunking strategy matters more than model choice.</span>
+                <div class="built-tags">
+                  <span class="tag">LangChain</span>
+                  <span class="tag tag-accent">Chroma</span>
+                  <span class="tag tag-accent">HuggingFace</span>
+                  <span class="tag">Gradio</span>
+                  <span class="tag">Python</span>
+                </div>
+              </div>
+            </a>
 
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div>
-        <!-- ── CHANGE: Your projects list ── -->
-
-        <!-- Project 1 -->
-        <a href="#" class="built-item">
-          <div class="built-icon" style="background: linear-gradient(135deg, #1a237e, #283593);">
-            <span class="built-icon-text">CV<br>EXT</span>
-          </div>
-          <div class="built-content">
-            <div class="built-arrow-wrap">
-              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="color:var(--ink);">
-                <path d="M2.5 10.5 L10.5 2.5 M6.5 2.5 L10.5 2.5 L10.5 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <span class="built-name">CvExtractor</span>
-            <span class="built-desc">HRs upload CVs, define custom fields, get structured Excel/CSV exports. Multi-tenant with per-client field schemas, Celery chord batching (100 files × 10/task), GPT-4o + Google Vision extraction, S3 direct upload, openpyxl export at merge layer.</span>
-            <div class="built-tags">
-              <span class="tag">Django 5 + DRF</span>
-              <span class="tag">Celery + Redis</span>
-              <span class="tag tag-accent">Gemini + Vision</span>
-              <span class="tag tag-accent">Pydantic v2</span>
-              <span class="tag">Next.js</span>
-              <span class="tag">PostgreSQL</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Project 2 -->
-        <a href="#" class="built-item">
-          <div class="built-icon" style="background: linear-gradient(135deg, #1b5e20, #2e7d32);">
-            <span class="built-icon-text">GG</span>
-          </div>
-          <div class="built-content">
-            <div class="built-arrow-wrap">
-              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="color:var(--ink);">
-                <path d="M2.5 10.5 L10.5 2.5 M6.5 2.5 L10.5 2.5 L10.5 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <span class="built-name">Ghar Gift</span>
-            <span class="built-desc">SaaS for Indian PG/hostel owners. Owner → Property → Tenant model, EdDSA auth (Better Auth), WhatsApp notifications via Whapi, Cloudinary media, Celery background jobs. Feature-complete and shipped.</span>
-            <div class="built-tags">
-              <span class="tag tag-accent">Marketplace & SaaS</span>
-              <span class="tag">Django 5 + DRF</span>
-              <span class="tag">Better Auth</span>
-              <span class="tag tag-accent">Whapi</span>
-              <span class="tag">Next.js</span>
-              <span class="tag">Cloudinary</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Project 3 -->
-        <a href="https://huggingface.co/spaces/ArshAnsari/NextRead" target="_blank" class="built-item">
-          <div class="built-icon" style="background: #1a1a18;">
-            <span class="built-icon-text" style="color: var(--accent); font-size:13px;">NR</span>
-          </div>
-          <div class="built-content">
-            <div class="built-arrow-wrap">
-              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="color:var(--ink);">
-                <path d="M2.5 10.5 L10.5 2.5 M6.5 2.5 L10.5 2.5 L10.5 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <span class="built-name">NextRead</span>
-            <span class="built-desc">Semantic book recommender. Describe a book you loved, get 5 embeddings-matched suggestions from a vector store of 7,000+ books. First real RAG project — where I learned that chunking strategy matters more than model choice.</span>
-            <div class="built-tags">
-              <span class="tag">LangChain</span>
-              <span class="tag tag-accent">Chroma</span>
-              <span class="tag tag-accent">HuggingFace</span>
-              <span class="tag">Gradio</span>
-              <span class="tag">Python</span>
-            </div>
-          </div>
-        </a>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════════
+      <!-- ════════════════════════════════════════
        CONTACT
   ════════════════════════════════════════ -->
-  <section id="contact" class="section-divider">
-    <div class="contact-layout reveal">
-      <div style="padding-top: 24px;">
-        <h2 class="section-h2">Contact</h2>
-        <p class="section-sub">Open to interesting problems and collaborations.</p>
-      </div>
-      <div class="contact-links">
+      <section id="contact" class="section-divider">
+        <div class="contact-layout reveal">
+          <div style="padding-top: 24px;">
+            <h2 class="section-h2">Contact</h2>
+            <p class="section-sub">Open to interesting problems and collaborations.</p>
+          </div>
+          <div class="contact-links">
 
-        <a href="mailto:arshhansari27@gmail.com" class="contact-link">
-          <div>
-            <div>Email</div>
-            <div class="contact-link-sub">arshhansari27@gmail.com</div>
-          </div>
-          <svg width="14" height="14" viewBox="0 0 13 13" fill="none"><path d="M2.5 10.5 L10.5 2.5 M6.5 2.5 L10.5 2.5 L10.5 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        
-        <a href="https://github.com/ArshhAnsari" target="_blank" class="contact-link">
-          <div>
-            <div>GitHub</div>
-            <div class="contact-link-sub">@ArshhAnsari</div>
-          </div>
-          <svg width="14" height="14" viewBox="0 0 13 13" fill="none"><path d="M2.5 10.5 L10.5 2.5 M6.5 2.5 L10.5 2.5 L10.5 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        
-        <a href="https://x.com/Arshansari27" target="_blank" class="contact-link">
-          <div>
-            <div>Twitter / X</div>
-            <div class="contact-link-sub">@Arshansari27</div>
-          </div>
-          <svg width="14" height="14" viewBox="0 0 13 13" fill="none"><path d="M2.5 10.5 L10.5 2.5 M6.5 2.5 L10.5 2.5 L10.5 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        
-        <a href="https://www.linkedin.com/in/arshansari" target="_blank" class="contact-link">
-          <div>
-            <div>LinkedIn</div>
-            <div class="contact-link-sub">Mohd Arsh Ansari</div>
-          </div>
-          <svg width="14" height="14" viewBox="0 0 13 13" fill="none"><path d="M2.5 10.5 L10.5 2.5 M6.5 2.5 L10.5 2.5 L10.5 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="https://www.instagram.com/arshhansari_/" target="_blank" class="contact-link">
-          <div>
-            <div>Instagram</div>
-            <div class="contact-link-sub">@arshhansari_</div>
-          </div>
-          <svg width="14" height="14" viewBox="0 0 13 13" fill="none"><path d="M2.5 10.5 L10.5 2.5 M6.5 2.5 L10.5 2.5 L10.5 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
+            <a href="mailto:arshhansari27@gmail.com" class="contact-link">
+              <div>
+                <div>Email</div>
+                <div class="contact-link-sub">arshhansari27@gmail.com</div>
+              </div>
+              <svg width="14" height="14" viewBox="0 0 13 13" fill="none">
+                <path d="M2.5 10.5 L10.5 2.5 M6.5 2.5 L10.5 2.5 L10.5 6.5" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
 
-</div><!-- /page-wrapper -->
-</main>
+            <a href="https://github.com/ArshhAnsari" target="_blank" class="contact-link">
+              <div>
+                <div>GitHub</div>
+                <div class="contact-link-sub">@ArshhAnsari</div>
+              </div>
+              <svg width="14" height="14" viewBox="0 0 13 13" fill="none">
+                <path d="M2.5 10.5 L10.5 2.5 M6.5 2.5 L10.5 2.5 L10.5 6.5" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
 
-<!-- ════════════════════════════════════════
+            <a href="https://x.com/Arshansari27" target="_blank" class="contact-link">
+              <div>
+                <div>Twitter / X</div>
+                <div class="contact-link-sub">@Arshansari27</div>
+              </div>
+              <svg width="14" height="14" viewBox="0 0 13 13" fill="none">
+                <path d="M2.5 10.5 L10.5 2.5 M6.5 2.5 L10.5 2.5 L10.5 6.5" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+
+            <a href="https://www.linkedin.com/in/arshansari" target="_blank" class="contact-link">
+              <div>
+                <div>LinkedIn</div>
+                <div class="contact-link-sub">Mohd Arsh Ansari</div>
+              </div>
+              <svg width="14" height="14" viewBox="0 0 13 13" fill="none">
+                <path d="M2.5 10.5 L10.5 2.5 M6.5 2.5 L10.5 2.5 L10.5 6.5" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/arshhansari_/" target="_blank" class="contact-link">
+              <div>
+                <div>Instagram</div>
+                <div class="contact-link-sub">@arshhansari_</div>
+              </div>
+              <svg width="14" height="14" viewBox="0 0 13 13" fill="none">
+                <path d="M2.5 10.5 L10.5 2.5 M6.5 2.5 L10.5 2.5 L10.5 6.5" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /page-wrapper -->
+  </main>
+
+  <!-- ════════════════════════════════════════
      FOOTER
 ════════════════════════════════════════ -->
-<footer>
-  <div class="page-wrapper footer-inner">
-    <span class="footer-txt">© 2026 Mohd Arsh</span>
-    <span class="footer-txt">Mumbai, India</span>
-  </div>
-</footer>
+  <footer>
+    <div class="page-wrapper footer-inner">
+      <span class="footer-txt">© 2026 Mohd Arsh</span>
+      <span class="footer-txt">Mumbai, India</span>
+    </div>
+  </footer>
 
-<!-- ════════════════════════════════════════
+  <!-- ════════════════════════════════════════
      SCRIPTS
 ════════════════════════════════════════ -->
-<script src="assets/js/common.js"></script>
-<script src="assets/js/index.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/index.js"></script>
 </body>
+
 </html>

@@ -2,7 +2,7 @@
 
 // ── Typewriter ──
 const phrases = [
-  'CvExtractor.',
+  'Extractly.',
   'Django APIs.',
   'Celery pipelines.',
   'LLM tooling.',
@@ -68,15 +68,3 @@ if (tw) {
   }
   setTimeout(tick, 800);
 }
-
-// ── Card hover arrow animation ──
-document.querySelectorAll('.b-card').forEach(card => {
-  card.addEventListener('mouseenter', () => {
-    const arrow = card.querySelector('.b-expand svg');
-    if (arrow) arrow.style.transform = 'translate(2px, -2px)';
-  });
-  card.addEventListener('mouseleave', () => {
-    const arrow = card.querySelector('.b-expand svg');
-    if (arrow) arrow.style.transform = '';
-  });
-});

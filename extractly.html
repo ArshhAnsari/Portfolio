@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en" id="root" class="dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Extractly Case Study — Mohd Arsh</title>
+  <meta name="description"
+    content="Extractly: turning a folder of CVs into a structured spreadsheet, automatically. A full-stack SaaS case study by Mohd Arsh.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/about.css">
+  <link rel="icon" type="image/png" href="assets/images/arsh.webp">
+  <style>
+    :root {
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+      --color-text-primary: var(--ink);
+      --color-text-secondary: var(--mid);
+      --color-border-secondary: var(--faint);
+      --color-border-tertiary: var(--rule);
+      --color-background-primary: var(--bg);
+      --color-background-secondary: var(--tag-bg);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .art {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem 6rem;
+      font-family: var(--font-sans);
+      color: var(--color-text-primary);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+      margin-bottom: .5rem;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 500;
+      margin: 3rem 0 1rem;
+      padding-top: 1.5rem;
+      border-top: .5px solid var(--color-border-tertiary);
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 500;
+      margin: 1.5rem 0 .5rem;
+      color: var(--color-text-primary);
+    }
+
+    p {
+      margin-bottom: 1.25rem;
+      color: var(--color-text-secondary);
+    }
+
+    p strong {
+      color: var(--color-text-primary);
+      font-weight: 500;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    .badge {
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      border: .5px solid var(--color-border-secondary);
+      color: var(--color-text-secondary);
+      background: var(--color-background-secondary);
+    }
+
+    .badge.blue {
+      background: #E6F1FB;
+      color: #0C447C;
+      border-color: #B5D4F4;
+    }
+
+    html.dark .badge.blue {
+      background: rgba(12, 68, 124, 0.2);
+      color: #8cc3f5;
+      border-color: rgba(181, 212, 244, 0.4);
+    }
+
+    .divider {
+      height: .5px;
+      background: var(--color-border-tertiary);
+      margin: 2.5rem 0;
+    }
+
+    pre {
+      background: var(--color-background-secondary);
+      border: .5px solid var(--color-border-tertiary);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--color-text-secondary);
+    }
+
+    code {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      background: var(--color-background-secondary);
+      padding: 1px 5px;
+      border-radius: 4px;
+      color: var(--color-text-primary);
+    }
+
+    .callout {
+      border-left: 2px solid #378ADD;
+      background: var(--color-background-secondary);
+      padding: .875rem 1.125rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1.5rem 0;
+    }
+
+    .callout p {
+      margin: 0;
+      font-size: 15px;
+      color: var(--color-text-primary);
+    }
+
+    .steps {
+      counter-reset: step;
+      margin: 1.5rem 0;
+    }
+
+    .step {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #E6F1FB;
+      color: #0C447C;
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    html.dark .step-num {
+      background: rgba(12, 68, 124, 0.2);
+      color: #8cc3f5;
+    }
+
+    .step-body {
+      flex: 1;
+    }
+
+    .step-body strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 2px;
+      color: var(--color-text-primary);
+    }
+
+    .step-body span {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+    }
+
+    .war-story {
+      border: .5px solid var(--color-border-secondary);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      background: rgba(var(--ink), 0.01);
+    }
+
+    .war-story .ws-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+      margin-bottom: .5rem;
+    }
+
+    .war-story h3 {
+      margin: .25rem 0 .75rem;
+      font-size: 16px;
+    }
+
+    .lesson {
+      margin-top: 1rem;
+      padding: .75rem 1rem;
+      background: var(--color-background-secondary);
+      border-radius: 8px;
+      font-size: 14px;
+      color: var(--color-text-secondary);
+    }
+
+    .lesson strong {
+      color: var(--color-text-primary);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .stat-card {
+      background: var(--color-background-secondary);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      border: 1px solid var(--color-border-tertiary);
+    }
+
+    .stat-card .num {
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--color-text-primary);
+    }
+
+    .stat-card .lbl {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      margin-top: 4px;
+    }
+
+    .links {
+      display: flex;
+      gap: .75rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      padding: 8px 18px;
+      border-radius: 8px;
+      border: 1px solid var(--color-border-secondary);
+      color: var(--color-text-primary);
+      text-decoration: none;
+      background: var(--color-background-primary);
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .link-btn:hover {
+      background: var(--color-background-secondary);
+      color: var(--color-text-primary);
+    }
+
+    .link-btn.primary {
+      background: #E6F1FB;
+      border-color: #B5D4F4;
+      color: #0C447C;
+    }
+
+    .link-btn.primary:hover {
+      background: #d8eaf9;
+    }
+
+    html.dark .link-btn.primary {
+      background: rgba(12, 68, 124, 0.2);
+      border-color: rgba(181, 212, 244, 0.3);
+      color: #8cc3f5;
+    }
+
+    html.dark .link-btn.primary:hover {
+      background: rgba(12, 68, 124, 0.35);
+    }
+
+    .layer-list {
+      margin: 1.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+
+    .layer {
+      background: var(--color-background-secondary);
+      border: .5px solid var(--color-border-tertiary);
+      border-radius: 10px;
+      padding: .875rem 1.125rem;
+    }
+
+    .layer-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+      margin-bottom: .35rem;
+    }
+
+    .layer strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text-primary);
+      margin-bottom: .25rem;
+    }
+
+    .layer span {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+    }
+
+    /* Icons */
+    .icon-link {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+
+    @media(max-width:500px) {
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <!-- tabler icons for demo/source links -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+</head>
+
+<body>
+
+  <!-- Navigation Action Bar -->
+  <nav id="site-nav"
+    style="position:fixed;top:0;left:0;right:0;z-index:100;height:52px;border-bottom:1px solid var(--rule);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background-color:color-mix(in srgb, var(--bg) 85%, transparent);display:flex;align-items:center">
+    <div
+      style="width:100%; max-width:720px; margin:0 auto; padding:0 1.5rem; display:flex; align-items:center; justify-content:space-between;">
+      <a style="font-size:13px;font-weight:500;color:var(--mid);text-decoration:none;transition:color 0.15s ease;display:flex;align-items:center;gap:6px;"
+        href="index.html#work">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        All work
+      </a>
+      <button class="dark-toggle" onclick="toggleDark()" aria-label="Toggle dark mode"
+        style="border:none;cursor:pointer;color:var(--mid);line-height:1;padding:6px 8px;display:flex;align-items:center;border-radius:8px;background:none;transition:color .15s, background .15s;position:relative;">
+        <svg id="dark-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path
+            d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401">
+          </path>
+        </svg>
+        <span class="toggle-tooltip" id="dark-label"
+          style="position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) scale(0.95);transform-origin:top center;white-space:nowrap;font-size:10px;font-weight:400;letter-spacing:0.12em;color:var(--mid);background:var(--bg);border:1px solid var(--rule);border-radius:6px;padding:4px 8px;pointer-events:none;opacity:0;transition:opacity .1s, transform .1s;">SWITCH
+          TO DARK MODE</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <article class="art">
+      <p class="eyebrow">Full-stack SaaS · Extractly</p>
+      <h1>Turning a folder of CVs into a structured spreadsheet, automatically</h1>
+
+      <div class="meta">
+        <span class="badge">Solo build</span>
+        <span class="badge">Deployed &amp; live</span>
+        <span class="badge blue">Django 5</span>
+        <span class="badge blue">Next.js 14</span>
+        <span class="badge blue">Celery</span>
+        <span class="badge blue">Groq LLM</span>
+        <span class="badge blue">Cloudinary</span>
+        <span class="badge blue">Pydantic v2</span>
+      </div>
+
+      <p>Every hiring drive ends the same way. A recruiter has 80 CVs. Half are PDFs. A dozen are scanned images. A few
+        are Word documents. They open each one manually, copy a name here, an email there, paste it into a spreadsheet.
+        Two hours later they have a half-complete table and a headache. Extractly automates that entirely.</p>
+
+      <p>You create a job, pick which fields to extract, upload the files, and get back a clean spreadsheet. PDFs, DOCX
+        files, even photographed CVs — it handles all of them. This is how I built it.</p>
+
+      <div class="two-col">
+        <div class="stat-card">
+          <div class="num">100</div>
+          <div class="lbl">files per job</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">18</div>
+          <div class="lbl">REST API endpoints</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">10</div>
+          <div class="lbl">concurrent Celery batches</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">4</div>
+          <div class="lbl">LLM retry attempts</div>
+        </div>
+      </div>
+
+      <h2>The upload pipeline — files never touch my server</h2>
+
+      <p>The first design decision that forced me to think carefully: where do the files go? The obvious path is to send
+        them to Django, save them to disk, then push them to storage. But that puts the API server in the critical path
+        of every upload. With 100 files per job, that's a lot of unnecessary load.</p>
+
+      <p>Instead, every file goes <strong>directly from the browser to Cloudinary</strong>. Django's only role in the
+        upload is generating a cryptographically signed set of upload parameters: a timestamp, a signature, and a
+        specific folder path with the job and tenant ID baked in. The browser uses those params to POST the file
+        straight to Cloudinary. Django never sees the bytes.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body"><strong>Browser requests upload signature</strong><span>POST /jobs/{id}/upload/sign/ —
+              Django validates the job, file type, and size, then signs the upload params.</span></div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body"><strong>File uploads directly to Cloudinary</strong><span>The browser uses the signed
+              params to POST the file. Django is not in this request at all.</span></div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body"><strong>Browser registers file references</strong><span>One batch call to POST
+              /jobs/{id}/files/ registers the Cloudinary public IDs. Job moves to QUEUED.</span></div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body"><strong>Cloudinary fires a webhook</strong><span>Django verifies the HMAC-SHA1
+              signature on every webhook call. A file becomes VERIFIED only after this check passes.</span></div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-body"><strong>Extraction can begin</strong><span>Only when all files are VERIFIED can the
+              user trigger extraction. This ordering is enforced server-side.</span></div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p>The webhook endpoint is public (no JWT required), but every request is signature-verified. Anyone can hit the
+          URL; only Cloudinary can produce a valid signature. It also has to be idempotent: Cloudinary retries on
+          non-200 responses, so receiving the same webhook twice for the same file has no effect.</p>
+      </div>
+
+      <h2>Duplicate CV detection — three independent layers</h2>
+
+      <p>When a user re-downloads a file that already exists on their machine, the OS renames it automatically:
+        <code>arsh.pdf</code> becomes <code>arsh (1).pdf</code>, then <code>arsh(2).pdf</code>. Because the strings
+        differ, a naive exact-match check treats all three as separate files — wasting LLM credits and polluting the
+        sheet with identical rows.</p>
+
+      <p>Blocking duplicates reliably required three <strong>independent</strong> layers. Each one protects against a
+        different failure mode: a user mistake, a bypassed frontend, or a concurrent race condition.</p>
+
+      <div class="layer-list">
+        <div class="layer">
+          <div class="layer-tag">Layer 1 — Frontend store</div>
+          <strong>Pre-upload, before any network call</strong>
+          <span><code>uploadStore.ts</code> normalizes every filename before adding it to the queue, stripping OS copy
+            suffixes like <code>(1)</code> or <code>(2)</code> so <code>arsh (1).pdf</code> and <code>arsh.pdf</code>
+            resolve to the same key. The duplicate is dropped silently with a toast warning. Zero API calls
+            wasted.</span>
+        </div>
+        <div class="layer">
+          <div class="layer-tag">Layer 2 — Sign endpoint</div>
+          <strong>Pre-Cloudinary, before storage credit is used</strong>
+          <span>Even if the frontend check is bypassed (via a direct API call or a race condition),
+            <code>POST /jobs/{id}/upload/sign/</code> normalizes the incoming filename and compares it against every
+            file already registered for that job. A <code>409 CONFLICT</code> is returned before a Cloudinary signature
+            is issued. The file is never uploaded and no storage credit is charged.</span>
+        </div>
+        <div class="layer">
+          <div class="layer-tag">Layer 3 — Batch registration</div>
+          <strong>Pre-DB, inside a SELECT FOR UPDATE transaction</strong>
+          <span><code>POST /jobs/{id}/files/</code> runs two deduplication passes: first within the incoming payload
+            itself (intra-batch), then against every file already in the database for that job. A
+            <code>SELECT FOR UPDATE</code> lock prevents two concurrent registration calls from both inserting the same
+            file. Only genuinely new files reach <code>bulk_create</code>.</span>
+        </div>
+      </div>
+
+      <pre>
+# Backend normalization — strips OS copy suffixes before any comparison
+def normalize_filename(filename: str) -> str:
+    stem, ext = os.path.splitext(filename)
+    return re.sub(r'\s*\(\d+\)$', '', stem) + ext
+
+# In UploadSignView.post():
+normalized_name = normalize_filename(filename)
+existing_names = {
+    normalize_filename(n)
+    for n in File.objects.filter(job=job).values_list('original_filename', flat=True)
+}
+if normalized_name in existing_names:
+    raise ConflictError(f"A file equivalent to '{filename}' already exists in this job.")
+</pre>
+
+      <div class="callout">
+        <p>If an entire batch registration call contains only duplicates, it succeeds silently, and the job moves to
+          <code>QUEUED</code> using the existing file count. Idempotency at every layer means retries are safe and the
+          user never sees a confusing error for something that isn't actually wrong.</p>
+      </div>
+
+      <h2>The extraction engine — Celery Chord</h2>
+
+      <p>When the user triggers extraction, I don't dispatch one task per file. I dispatch a <strong>Celery
+          Chord</strong>. The chord splits all verified files into batches of ten, runs those batches concurrently, and
+        fires a single callback once every batch has resolved, regardless of success or failure.</p>
+
+      <pre>
+_dispatch_chord()
+  │
+  ├── process_batch(files[0:10])   ─┐
+  ├── process_batch(files[10:20])   ├── run in parallel
+  ├── process_batch(files[20:30])   │   across Celery workers
+  │   ...                          ─┘
+  │
+  └── on_chord_complete()  ← fires exactly once, after all batches finish
+        counts done_files / failed_files
+        COMPLETE | PARTIAL | FAILED
+</pre>
+
+      <p>The key property: <code>on_chord_complete()</code> fires <em>exactly once</em>, after all batches are done. It
+        counts the results and transitions the job to its final status. If 85 files succeeded and 2 failed, the job is
+        <code>PARTIAL</code>. The sheet unlocks, the successful rows are available, and the failed rows appear as null
+        cells. The whole job doesn't fail because of two bad files.</p>
+
+      <p>The frontend polls <code>GET /jobs/{id}/status/</code> every few seconds during processing. The response is
+        intentionally tiny: just <code>status</code>, <code>done_files</code>, and <code>failed_files</code>. No rows,
+        no snapshot data. Cheap to call, cheap to serve.</p>
+
+      <h2>Inside each batch — the OCR + LLM pipeline</h2>
+
+      <p>Every file goes through the same pipeline inside <code>process_batch()</code>:</p>
+
+      <pre>
+File type detection
+  PDF    →  pdfplumber     → raw_text
+  DOCX   →  python-docx    → raw_text
+  Image  →  OCR.space Engine 2 (remote URL as input) → raw_text
+
+raw_text saved to database  ← V2 re-extraction hook
+
+build_prompt(fields_snapshot)
+  → injects field names, types, and custom hints
+  → instructs LLM to return null for missing fields
+
+groq_extract()
+  → llama-3.3-70b-versatile
+  → JSON mode, temp=0, 60s timeout
+  → tenacity: 4 retries, 1–20s backoff
+
+Pydantic v2 validates the response
+  pass  →  ExtractedRow.save()   File.status = DONE
+  fail  →  ExtractedRow(null)    File.status = FAILED
+</pre>
+
+      <p>The <code>fields_snapshot</code>, which is the list of fields HR defined at job creation, is frozen at that
+        moment and never changes. It drives the extraction prompt, the column order in the sheet view, and every export
+        for that job's entire lifetime. This was a deliberate product decision: if the field config could change after
+        some files had already been extracted, the resulting sheet would be inconsistent. Immutability solves that
+        entirely.</p>
+
+      <div class="callout">
+        <p>Pydantic v2 acts as an unbreakable contract between the LLM and the database. The LLM is asked to return a
+          JSON object matching the fields_snapshot schema. If it hallucinates a field name, adds extra keys, or returns
+          the wrong type, Pydantic catches it and tenacity retries the call. The data that reaches the database is
+          always structurally valid.</p>
+      </div>
+
+      <h2>Bugs that taught me things</h2>
+
+      <div class="war-story">
+        <div class="ws-label">Bug 01</div>
+        <h3>The DRF query parameter that 404s before your view runs</h3>
+        <p>After the entire extraction pipeline was working end-to-end, the export endpoint kept returning
+          <code>404 Not Found</code>. The rows endpoint on the same job returned 200. The URL was registered —
+          <code>resolve()</code> confirmed it. The view code looked correct.</p>
+        <p>The culprit was DRF's content negotiation. DRF reserves <code>?format=</code> as a system parameter. When a
+          request arrives, DRF calls <code>perform_content_negotiation()</code> inside <code>APIView.dispatch()</code> —
+          before authentication, before permissions, before your view code runs. It looks for a renderer matching the
+          requested format. I only had <code>JSONRenderer</code> configured, so <code>?format=xlsx</code> produced a 404
+          before I ever got control.</p>
+        <p>The fix: rename the parameter from <code>format</code> to <code>export_format</code> everywhere, including
+          the view, frontend, and integration tests.</p>
+        <div class="lesson"><strong>Lesson:</strong> never use <code>format</code> as a query parameter name in a DRF
+          view. The debugging approach that found it: test the endpoint without the query parameter first. If you get a
+          400 (view reached, validation failed) but a 404 with the parameter, something before your view is intercepting
+          the request.</div>
+      </div>
+
+      <div class="war-story">
+        <div class="ws-label">Bug 02</div>
+        <h3>The webhook that arrived before the database transaction committed</h3>
+        <p>Cloudinary fires webhooks almost immediately after an upload completes. In testing, some webhook requests
+          were arriving while Django's database transaction was still committing, meaning the webhook handler tried to
+          look up a <code>File</code> record by its Cloudinary public ID, found nothing, and silently dropped the
+          verification.</p>
+        <p>The fix was wrapping the post-registration work in Django's <code>transaction.on_commit()</code>:</p>
+        <pre>def register_files(job, file_data_list):
+    File.objects.bulk_create([...])
+    job.status = JobStatus.QUEUED
+    job.save()
+    # Only notify AFTER the transaction is fully committed
+    transaction.on_commit(lambda: notify_upload_complete(job.id))</pre>
+        <p>This guarantees that any subsequent webhook lookup always finds a committed record. The idempotency guard on
+          the webhook handler covers the rare case of duplicate delivery.</p>
+        <div class="lesson"><strong>Lesson:</strong> any time you create a record and immediately fire an external
+          notification based on it, wrap the notification in <code>transaction.on_commit()</code>. The transaction is
+          not visible to other processes until that callback fires.</div>
+      </div>
+
+      <div class="war-story">
+        <div class="ws-label">Bug 03</div>
+        <h3>The duplicate that wasn't — OS copy suffixes and a silent typo</h3>
+        <p>Duplicate CVs were silently passing through the original upload pipeline. When a user re-downloads a file on
+          Windows or macOS, the OS renames it: <code>arsh.pdf</code> becomes <code>arsh (1).pdf</code>. Because the
+          strings differ, the original exact-match check treated them as different files. Consequently, the same CV was
+          processed twice, two LLM calls were charged, and two identical rows appeared in the sheet.</p>
+        <p>Building the three-layer duplicate detection system (frontend store normalization, sign endpoint rejection,
+          batch registration deduplication) fixed the core problem. But during that work, a second bug surfaced. In the
+          all-duplicates path (where the entire batch registration payload turns out to be duplicates and no new files
+          are inserted), the job counter update had a typo:</p>
+        <pre>
+# Before — silent 500 waiting to happen in production
+job.save(update_fields=["total_fields", "status"])
+
+# After — correct field name
+job.save(update_fields=["total_files", "status"])</pre>
+        <p>One character difference between <code>total_fields</code> and <code>total_files</code>. In the happy path
+          (at least one new file), this code is never reached. Only the all-duplicate branch hits it. It would have
+          raised a <code>django.core.exceptions.FieldError</code> 500 in production the first time a user tried to
+          re-register an already-uploaded batch.</p>
+        <div class="lesson"><strong>Lesson:</strong> defense in depth for input validation, and be sure to test every
+          branch, not just the happy path. The all-duplicates case is the exact edge case you're least likely to hit in
+          manual testing and most likely to ship broken into production.</div>
+      </div>
+
+      <h2>What's built vs. what's next</h2>
+
+      <p>Phase 1 is shipped and live. The full pipeline, including upload, webhook verification, async extraction, OCR,
+        LLM, export, merge, and Google Sheets integration, all works in production.</p>
+
+      <p>The hooks for Phase 2 are already in the codebase. Every file's <code>raw_text</code> is stored in the
+        database. That means delta re-extraction (re-running the LLM on cached text without re-uploading) is an
+        activation away, not a rebuild. WebSocket job progress is the obvious next UX improvement over the current
+        polling approach.</p>
+
+      <div class="links">
+        <a class="link-btn primary" href="https://extractlyy.vercel.app" target="_blank"><i class="ti ti-external-link"
+            aria-hidden="true" style="font-size:15px"></i> Live demo</a>
+        <a class="link-btn" href="https://github.com/ArshhAnsari/Extractly" target="_blank"><i
+            class="ti ti-brand-github" aria-hidden="true" style="font-size:15px"></i> Source code</a>
+        <a class="link-btn" href="https://cvextractor-api-5evt.onrender.com/docs" target="_blank"><i
+            class="ti ti-file-description" aria-hidden="true" style="font-size:15px"></i> API docs</a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer>
+    <div class="page-wrapper footer-inner">
+      <span class="footer-txt">© 2026 Mohd Arsh</span>
+      <span class="footer-txt">Mumbai, India</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/common.js"></script>
+</body>
+
+</html>
