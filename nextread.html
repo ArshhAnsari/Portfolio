@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en" id="root" class="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NextRead Case Study — Mohd Arsh</title>
+    <meta name="description"
+        content="NextRead: a semantic book recommender that matches mood, tone, and meaning — not just keywords. A case study by Mohd Arsh.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/about.css">
+    <link rel="icon" type="image/png" href="assets/images/arsh.webp">
+    <style>
+        :root {
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --font-mono: 'DM Mono', monospace;
+            --color-text-primary: var(--ink);
+            --color-text-secondary: var(--mid);
+            --color-border-secondary: var(--faint);
+            --color-border-tertiary: var(--rule);
+            --color-background-primary: var(--bg);
+            --color-background-secondary: var(--tag-bg);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .art {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 5rem 1.5rem 6rem;
+            font-family: var(--font-sans);
+            color: var(--color-text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .eyebrow {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--color-text-secondary);
+            margin-bottom: .5rem;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 500;
+            margin: 3rem 0 1rem;
+            padding-top: 1.5rem;
+            border-top: .5px solid var(--color-border-tertiary);
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 500;
+            margin: 1.5rem 0 .5rem;
+            color: var(--color-text-primary);
+        }
+
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--color-text-secondary);
+        }
+
+        p strong {
+            color: var(--color-text-primary);
+            font-weight: 500;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+            margin: 1.5rem 0 2.5rem;
+        }
+
+        .badge {
+            font-size: 12px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            border: .5px solid var(--color-border-secondary);
+            color: var(--color-text-secondary);
+            background: var(--color-background-secondary);
+        }
+
+        .badge.purple {
+            background: #F5EBF7;
+            color: #4A1942;
+            border-color: #E2CDDF;
+        }
+
+        html.dark .badge.purple {
+            background: rgba(74, 25, 66, 0.2);
+            color: #dca0d4;
+            border-color: rgba(220, 160, 212, 0.4);
+        }
+
+        .divider {
+            height: .5px;
+            background: var(--color-border-tertiary);
+            margin: 2.5rem 0;
+        }
+
+        pre {
+            background: var(--color-background-secondary);
+            border: .5px solid var(--color-border-tertiary);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+        }
+
+        code {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            background: var(--color-background-secondary);
+            padding: 1px 5px;
+            border-radius: 4px;
+            color: var(--color-text-primary);
+        }
+
+        .callout {
+            border-left: 2px solid #8B5CF6;
+            background: var(--color-background-secondary);
+            padding: .875rem 1.125rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 15px;
+            color: var(--color-text-primary);
+        }
+
+        .steps {
+            counter-reset: step;
+            margin: 1.5rem 0;
+        }
+
+        .step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            align-items: flex-start;
+        }
+
+        .step-num {
+            flex-shrink: 0;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #F5EBF7;
+            color: #4A1942;
+            font-size: 13px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2px;
+        }
+
+        html.dark .step-num {
+            background: rgba(74, 25, 66, 0.2);
+            color: #dca0d4;
+        }
+
+        .step-body {
+            flex: 1;
+        }
+
+        .step-body strong {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 2px;
+            color: var(--color-text-primary);
+        }
+
+        .step-body span {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        .war-story {
+            border: .5px solid var(--color-border-secondary);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin: 2rem 0;
+            background: rgba(var(--ink), 0.01);
+        }
+
+        .war-story .ws-label {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--color-text-secondary);
+            margin-bottom: .5rem;
+        }
+
+        .war-story h3 {
+            margin: .25rem 0 .75rem;
+            font-size: 16px;
+        }
+
+        .lesson {
+            margin-top: 1rem;
+            padding: .75rem 1rem;
+            background: var(--color-background-secondary);
+            border-radius: 8px;
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        .lesson strong {
+            color: var(--color-text-primary);
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-card {
+            background: var(--color-background-secondary);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid var(--color-border-tertiary);
+        }
+
+        .stat-card .num {
+            font-size: 24px;
+            font-weight: 500;
+            color: var(--color-text-primary);
+        }
+
+        .stat-card .lbl {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            margin-top: 4px;
+        }
+
+        .links {
+            display: flex;
+            gap: .75rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            padding: 8px 18px;
+            border-radius: 8px;
+            border: 1px solid var(--color-border-secondary);
+            color: var(--color-text-primary);
+            text-decoration: none;
+            background: var(--color-background-primary);
+            transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .link-btn:hover {
+            background: var(--color-background-secondary);
+            color: var(--color-text-primary);
+        }
+
+        .link-btn.primary {
+            background: #F5EBF7;
+            border-color: #E2CDDF;
+            color: #4A1942;
+        }
+
+        .link-btn.primary:hover {
+            background: #eddced;
+        }
+
+        html.dark .link-btn.primary {
+            background: rgba(74, 25, 66, 0.2);
+            border-color: rgba(220, 160, 212, 0.3);
+            color: #dca0d4;
+        }
+
+        html.dark .link-btn.primary:hover {
+            background: rgba(74, 25, 66, 0.35);
+        }
+
+        @media(max-width:500px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+</head>
+
+<body>
+
+    <nav id="site-nav"
+        style="position:fixed;top:0;left:0;right:0;z-index:100;height:52px;border-bottom:1px solid var(--rule);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background-color:color-mix(in srgb, var(--bg) 85%, transparent);display:flex;align-items:center">
+        <div
+            style="width:100%; max-width:720px; margin:0 auto; padding:0 1.5rem; display:flex; align-items:center; justify-content:space-between;">
+            <a style="font-size:13px;font-weight:500;color:var(--mid);text-decoration:none;transition:color 0.15s ease;display:flex;align-items:center;gap:6px;"
+                href="index.html#work">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                All work
+            </a>
+            <button class="dark-toggle" onclick="toggleDark()" aria-label="Toggle dark mode"
+                style="border:none;cursor:pointer;color:var(--mid);line-height:1;padding:6px 8px;display:flex;align-items:center;border-radius:8px;background:none;transition:color .15s, background .15s;position:relative;">
+                <svg id="dark-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401">
+                    </path>
+                </svg>
+                <span class="toggle-tooltip" id="dark-label"
+                    style="position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) scale(0.95);transform-origin:top center;white-space:nowrap;font-size:10px;font-weight:400;letter-spacing:0.12em;color:var(--mid);background:var(--bg);border:1px solid var(--rule);border-radius:6px;padding:4px 8px;pointer-events:none;opacity:0;transition:opacity .1s, transform .1s;">SWITCH
+                    TO DARK MODE</span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <article class="art">
+            <p class="eyebrow">ML · Semantic Search · NextRead</p>
+            <h1>Finding the right book by meaning, not by keyword</h1>
+
+            <div class="meta">
+                <span class="badge">Solo build</span>
+                <span class="badge">Open source</span>
+                <span class="badge purple">Python</span>
+                <span class="badge purple">LangChain</span>
+                <span class="badge purple">Chroma</span>
+                <span class="badge purple">HuggingFace</span>
+                <span class="badge purple">Gradio Blocks</span>
+            </div>
+
+            <p>The problem with every book discovery tool is the same: they match words, not meaning. You search for "a
+                dark novel about obsession" and you get results that contain those exact words in reviews, or you get
+                nothing. The book you actually want — the one that <em>feels</em> like obsession — never surfaces.</p>
+
+            <p>NextRead treats book discovery as a semantic retrieval problem. You describe what you want to read in
+                everyday natural language, and the system finds books whose descriptions are nearest in vector space to
+                your query. It layers genre classification and emotional tone on top of that, allowing you to filter not
+                just by category, but by how the book will make you feel. Here is how I designed and built it.</p>
+
+            <div class="two-col">
+                <div class="stat-card">
+                    <div class="num">7K+</div>
+                    <div class="lbl">books in the corpus</div>
+                </div>
+                <div class="stat-card">
+                    <div class="num">384</div>
+                    <div class="lbl">embedding dimensions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="num">5</div>
+                    <div class="lbl">emotional tone filters</div>
+                </div>
+                <div class="stat-card">
+                    <div class="num">0</div>
+                    <div class="lbl">external API costs</div>
+                </div>
+            </div>
+
+            <h2>Data preparation & embedding corpus structure</h2>
+
+            <p>The foundation of any good retrieval system is clean, well-structured data. Rather than feeding raw,
+                noisy CSV strings directly into vector space, I pre-processed the descriptions and decoupled the text
+                embeddings from the rich tabular metadata.</p>
+
+            <p>In my pipeline, descriptions are cleaned and stored in a lightweight text file
+                (<code>tagged_description.txt</code>). Each line begins with the book's 13-digit ISBN followed directly
+                by the textual description. When the app boots up, it reads this file and converts each line into a
+                LangChain <code>Document</code> schema.</p>
+
+            <pre>
+# Load pre-tagged descriptions for embedding
+with open("tagged_description.txt", "r", encoding="utf-8", errors="ignore") as f:
+    content = f.read()
+
+# Convert each line into a LangChain Document
+raw_documents = [
+    Document(page_content=line.strip())
+    for line in content.split("\n")
+    if line.strip()
+]
+</pre>
+
+            <div class="callout">
+                <p>By keeping the embedding corpus lightweight and stripping short, noisy descriptions early in
+                    exploration, we ensure that every document in vector space has enough semantic signal to form
+                    meaningful clusters.</p>
+            </div>
+
+            <h2>Local embeddings & Chroma vector storage</h2>
+
+            <p>For the embedding model, I chose <code>all-MiniLM-L6-v2</code> from Sentence Transformers via
+                HuggingFace. It produces 384-dimensional vectors that strike an exceptional balance between speed and
+                semantic accuracy in English prose. Crucially, running embeddings locally removes any reliance on
+                external API keys, rate limits, or per-token network costs.</p>
+
+            <p>In the current architecture, the LangChain documents are ingested directly into a Chroma vector store on
+                startup:</p>
+
+            <pre>
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_chroma import Chroma
+
+# Create the Chroma vector store with Hugging Face embeddings
+embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+db_books = Chroma.from_documents(
+    raw_documents,
+    embedding=embeddings
+)
+</pre>
+
+            <h2>Two-Stage recommendation: Vector retrieval + Pandas filtering</h2>
+
+            <p>To handle category classification (Fiction vs. Non-Fiction) and emotion filtering (Joy, Surprise, Anger,
+                Fear, Sadness) without bogging down vector similarity math, NextRead utilizes a two-stage retrieval
+                pipeline.</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-body"><strong>Semantic similarity search</strong><span>The user's query is
+                            embedded, and Chroma performs a similarity search (`k=50`) to cast a wide net for books that
+                            match the thematic intent.</span></div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-body"><strong>ISBN extraction & DataFrame mapping</strong><span>We extract the
+                            ISBN13 from the retrieved text chunks and filter our core Pandas DataFrame
+                            (<code>books_with_emotions.csv</code>) down to these top semantic matches.</span></div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-body"><strong>Category filtering</strong><span>If a specific category is selected,
+                            Pandas slices the retrieved candidates where
+                            <code>simple_categories == category</code>.</span></div>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <div class="step-body"><strong>Emotional tone sorting</strong><span>If an emotional tone is
+                            requested (e.g., "Happy", "Suspenseful", "Sad"), we sort the filtered DataFrame by the
+                            pre-calculated sentiment scores (<code>joy</code>, <code>fear</code>, <code>sadness</code>,
+                            etc.) before returning the top 16 books.</span></div>
+                </div>
+            </div>
+
+            <pre>
+def retrieve_semantic_recommendations(
+    query: str,
+    category: str = None,
+    tone: str = None,
+    initial_top_k: int = 50,
+    final_top_k: int = 16,
+) -> pd.DataFrame:
+    recs = db_books.similarity_search_with_score(query, k=initial_top_k)
+    # Extract ISBN13s from the top semantically-similar chunks
+    books_list = [
+        int(doc.page_content.strip('"').split()[0])
+        for doc, _score in recs
+    ]
+    book_recs = books[books["isbn13"].isin(books_list)].head(final_top_k)
+    
+    if category and category != "All":
+        book_recs = book_recs[book_recs["simple_categories"] == category].head(final_top_k)
+        
+    if tone == "Happy":
+        book_recs = book_recs.sort_values("joy", ascending=False)
+    elif tone == "Surprising":
+        book_recs = book_recs.sort_values("surprise", ascending=False)
+    elif tone == "Angry":
+        book_recs = book_recs.sort_values("anger", ascending=False)
+    elif tone == "Suspenseful":
+        book_recs = book_recs.sort_values("fear", ascending=False)
+    elif tone == "Sad":
+        book_recs = book_recs.sort_values("sadness", ascending=False)
+    return book_recs
+</pre>
+
+            <h2>A modern, glassmorphism UI with Gradio Blocks</h2>
+
+            <p>Rather than settling for a standard, out-of-the-box interface, I built the frontend using **Gradio
+                Blocks** with a custom Glassmorphism theme. To make the discovery experience engaging from the second
+                the app opens, I injected custom CSS for hover-lift card animations, modern raised buttons, and a
+                responsive layout.</p>
+
+            <p>The dashboard also features an automatic **Featured Books** carousel that dynamically samples 12
+                randomized recommendations whenever you launch or refresh the page, ensuring users always have immediate
+                inspiration:</p>
+
+            <pre>
+with gr.Blocks(theme=gr.themes.Glass(), css="""...custom CSS...""") as dashboard:
+    gr.Markdown("""&lt;div id="app-header"&gt;&lt;span&gt;📖 NextRead&lt;/span&gt;&lt;/div&gt;""")
+    
+    # Random Featured Books Carousel
+    featured_gallery = gr.Gallery(
+        value=get_featured_books,
+        show_label=False, columns=6, rows=2, elem_id="featured-gallery"
+    )
+    
+    with gr.Row():
+        user_query = gr.Textbox(label="✍️ Please enter a description of a book", lines=2)
+        category_dropdown = gr.Dropdown(choices=categories, label="🔖 Select a category:", value="All")
+        tone_dropdown = gr.Dropdown(choices=tones, label="🎭 Select an emotional tone:", value="All")
+</pre>
+
+            <h2>Optimization roadmap: What can be done to improve speed</h2>
+
+            <p>While the current architecture is functional and highly responsive for a prototype, treating data
+                engineering as an evolving discipline means constantly looking for bottlenecks. Here are the key
+                performance upgrades planned to 10x the application's speed and scalability:</p>
+
+            <div class="war-story">
+                <div class="ws-label">Upgrade 01</div>
+                <h3>Generating the Chroma DB persistently to eliminate startup overhead</h3>
+                <p>Currently, `app.py` reads `tagged_description.txt` and generates the Chroma vector store on
+                    application startup. While creating an in-memory client works cleanly for small datasets, building
+                    vectors on load introduces unnecessary cold-start latency.</p>
+                <p>By updating the ingestion script to generate the Chroma DB persistently using
+                    `chromadb.PersistentClient(path="./chroma_db")`, we can compute embeddings exactly once and store
+                    them to disk. Updating `app.py` to match and load this persistent directory will eliminate
+                    cold-start embedding overhead entirely—dropping app launch times from minutes down to under 2
+                    seconds!</p>
+                <div class="lesson"><strong>Performance Takeaway:</strong> Never recompute what you can persist. Moving
+                    embedding generation from runtime to an offline ingestion build step is the single highest-leverage
+                    optimization for vector search applications.</div>
+            </div>
+
+            <div class="war-story">
+                <div class="ws-label">Upgrade 02</div>
+                <h3>Injecting metadata directly into LangChain Document objects for pre-retrieval filtering</h3>
+                <p>In our current two-stage architecture, the app retrieves the top 50 semantic matches via cosine
+                    similarity and then uses Pandas DataFrames to slice by category and sort by emotion scores
+                    post-retrieval. If a user searches for a rare niche within "Non-Fiction," post-retrieval filtering
+                    risks filtering out too many candidates from those top 50.</p>
+                <p>An excellent performance upgrade is injecting our zero-shot genre classifications and sentiment
+                    scores directly into the LangChain `Document` metadata dicts during ingestion. Once stored in
+                    Chroma, we can utilize native `where` metadata filters at query time (`filter={"category":
+                    selected_category}`). Chroma evaluates metadata filters *before* computing vector distance, meaning
+                    the vector search space is instantly cut in half and 100% of returned results are guaranteed to
+                    match the user's category.</p>
+                <div class="lesson"><strong>Performance Takeaway:</strong> Pre-retrieval filtering beats post-retrieval
+                    slicing. Think of document metadata as pre-computed index filters—the more structured context you
+                    inject into LangChain objects at ingestion, the faster and more precise your query-time retrieval
+                    becomes.</div>
+            </div>
+
+            <div class="war-story">
+                <div class="ws-label">Upgrade 03</div>
+                <h3>Integrating a Cross-Encoder Re-ranking layer</h3>
+                <p>Cosine similarity in embedding space is a brilliant first-pass retriever, but bi-encoders compress
+                    entire book descriptions into a single pooled vector, occasionally missing subtle nuances in writing
+                    style or narrative pacing.</p>
+                <p>A planned architectural upgrade is introducing a lightweight cross-encoder model (such as
+                    `cross-encoder/ms-marco-MiniLM-L-6-v2`) as a second-stage re-ranker. By fetching the top 30
+                    candidates from Chroma and scoring the `(user_query, book_description)` pairs jointly, we can
+                    achieve production-grade retrieval precision without sacrificing the low latency of vector search.
+                </p>
+                <div class="lesson"><strong>Performance Takeaway:</strong> The retrieval-then-rerank design pattern is
+                    the gold standard for semantic search—using fast vector similarity for high recall, followed by a
+                    precise cross-encoder for sharp relevance scoring.</div>
+            </div>
+
+            <div class="links">
+                <a class="link-btn primary" href="https://huggingface.co/spaces/ArshAnsari/NextRead" target="_blank"><i class="ti ti-external-link" aria-hidden="true" style="font-size:15px"></i> Live demo</a>
+                <a class="link-btn" href="https://github.com/ArshhAnsari/NextRead" target="_blank"><i
+                        class="ti ti-brand-github" aria-hidden="true" style="font-size:15px"></i> Source code</a>
+            </div>
+
+        </article>
+    </main>
+
+    <footer>
+        <div class="page-wrapper footer-inner">
+            <span class="footer-txt">© 2026 Mohd Arsh</span>
+            <span class="footer-txt">Mumbai, India</span>
+        </div>
+    </footer>
+
+    <script src="assets/js/common.js"></script>
+</body>
+
+</html>
