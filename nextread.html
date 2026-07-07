@@ -5,12 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>NextRead Case Study — Mohd Arsh</title>
-    <meta name="description"
-        content="NextRead: a semantic book recommender that matches mood, tone, and meaning — not just keywords. A case study by Mohd Arsh.">
+    <meta name="description" content="NextRead: a semantic book recommender that matches mood, tone, and meaning — not just keywords. A case study by Mohd Arsh.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/about.css">
     <link rel="icon" type="image/png" href="assets/images/arsh.webp">
@@ -323,30 +320,20 @@
 
 <body>
 
-    <nav id="site-nav"
-        style="position:fixed;top:0;left:0;right:0;z-index:100;height:52px;border-bottom:1px solid var(--rule);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background-color:color-mix(in srgb, var(--bg) 85%, transparent);display:flex;align-items:center">
-        <div
-            style="width:100%; max-width:720px; margin:0 auto; padding:0 1.5rem; display:flex; align-items:center; justify-content:space-between;">
-            <a style="font-size:13px;font-weight:500;color:var(--mid);text-decoration:none;transition:color 0.15s ease;display:flex;align-items:center;gap:6px;"
-                href="index.html#work">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                    stroke-linecap="round" stroke-linejoin="round">
+    <nav id="site-nav" style="position:fixed;top:0;left:0;right:0;z-index:100;height:52px;border-bottom:1px solid var(--rule);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background-color:color-mix(in srgb, var(--bg) 85%, transparent);display:flex;align-items:center">
+        <div style="width:100%; max-width:720px; margin:0 auto; padding:0 1.5rem; display:flex; align-items:center; justify-content:space-between;">
+            <a style="font-size:13px;font-weight:500;color:var(--mid);text-decoration:none;transition:color 0.15s ease;display:flex;align-items:center;gap:6px;" href="index.html#work">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="19" y1="12" x2="5" y2="12"></line>
                     <polyline points="12 19 5 12 12 5"></polyline>
                 </svg>
                 All work
             </a>
-            <button class="dark-toggle" onclick="toggleDark()" aria-label="Toggle dark mode"
-                style="border:none;cursor:pointer;color:var(--mid);line-height:1;padding:6px 8px;display:flex;align-items:center;border-radius:8px;background:none;transition:color .15s, background .15s;position:relative;">
-                <svg id="dark-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path
-                        d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401">
-                    </path>
+            <button class="dark-toggle" onclick="toggleDark()" aria-label="Toggle dark mode" style="border:none;cursor:pointer;color:var(--mid);line-height:1;padding:6px 8px;display:flex;align-items:center;border-radius:8px;background:none;transition:color .15s, background .15s;position:relative;">
+                <svg id="dark-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path>
                 </svg>
-                <span class="toggle-tooltip" id="dark-label"
-                    style="position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) scale(0.95);transform-origin:top center;white-space:nowrap;font-size:10px;font-weight:400;letter-spacing:0.12em;color:var(--mid);background:var(--bg);border:1px solid var(--rule);border-radius:6px;padding:4px 8px;pointer-events:none;opacity:0;transition:opacity .1s, transform .1s;">SWITCH
-                    TO DARK MODE</span>
+                <span class="toggle-tooltip" id="dark-label" style="position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) scale(0.95);transform-origin:top center;white-space:nowrap;font-size:10px;font-weight:400;letter-spacing:0.12em;color:var(--mid);background:var(--bg);border:1px solid var(--rule);border-radius:6px;padding:4px 8px;pointer-events:none;opacity:0;transition:opacity .1s, transform .1s;">SWITCH TO DARK MODE</span>
             </button>
         </div>
     </nav>
@@ -366,14 +353,9 @@
                 <span class="badge purple">Gradio Blocks</span>
             </div>
 
-            <p>The problem with every book discovery tool is the same: they match words, not meaning. You search for "a
-                dark novel about obsession" and you get results that contain those exact words in reviews, or you get
-                nothing. The book you actually want — the one that <em>feels</em> like obsession — never surfaces.</p>
+            <p>The problem with every book discovery tool is the same: they match words, not meaning. You search for "a dark novel about obsession" and you get results that contain those exact words in reviews, or you get nothing. The book you actually want — the one that <em>feels</em> like obsession — never surfaces.</p>
 
-            <p>NextRead treats book discovery as a semantic retrieval problem. You describe what you want to read in
-                everyday natural language, and the system finds books whose descriptions are nearest in vector space to
-                your query. It layers genre classification and emotional tone on top of that, allowing you to filter not
-                just by category, but by how the book will make you feel. Here is how I designed and built it.</p>
+            <p>NextRead treats book discovery as a semantic retrieval problem. You describe what you want to read in everyday natural language, and the system finds books whose descriptions are nearest in vector space to your query. It layers genre classification and emotional tone on top of that, allowing you to filter not just by category, but by how the book will make you feel. Here is how I designed and built it.</p>
 
             <div class="two-col">
                 <div class="stat-card">
@@ -396,14 +378,9 @@
 
             <h2>Data preparation & embedding corpus structure</h2>
 
-            <p>The foundation of any good retrieval system is clean, well-structured data. Rather than feeding raw,
-                noisy CSV strings directly into vector space, I pre-processed the descriptions and decoupled the text
-                embeddings from the rich tabular metadata.</p>
+            <p>The foundation of any good retrieval system is clean, well-structured data. Rather than feeding raw, noisy CSV strings directly into vector space, I pre-processed the descriptions and decoupled the text embeddings from the rich tabular metadata.</p>
 
-            <p>In my pipeline, descriptions are cleaned and stored in a lightweight text file
-                (<code>tagged_description.txt</code>). Each line begins with the book's 13-digit ISBN followed directly
-                by the textual description. When the app boots up, it reads this file and converts each line into a
-                LangChain <code>Document</code> schema.</p>
+            <p>In my pipeline, descriptions are cleaned and stored in a lightweight text file (<code>tagged_description.txt</code>). Each line begins with the book's 13-digit ISBN followed directly by the textual description. When the app boots up, it reads this file and converts each line into a LangChain <code>Document</code> schema.</p>
 
             <pre>
 # Load pre-tagged descriptions for embedding
@@ -419,20 +396,14 @@ raw_documents = [
 </pre>
 
             <div class="callout">
-                <p>By keeping the embedding corpus lightweight and stripping short, noisy descriptions early in
-                    exploration, we ensure that every document in vector space has enough semantic signal to form
-                    meaningful clusters.</p>
+                <p>By keeping the embedding corpus lightweight and stripping short, noisy descriptions early in exploration, we ensure that every document in vector space has enough semantic signal to form meaningful clusters.</p>
             </div>
 
             <h2>Local embeddings & Chroma vector storage</h2>
 
-            <p>For the embedding model, I chose <code>all-MiniLM-L6-v2</code> from Sentence Transformers via
-                HuggingFace. It produces 384-dimensional vectors that strike an exceptional balance between speed and
-                semantic accuracy in English prose. Crucially, running embeddings locally removes any reliance on
-                external API keys, rate limits, or per-token network costs.</p>
+            <p>For the embedding model, I chose <code>all-MiniLM-L6-v2</code> from Sentence Transformers via HuggingFace. It produces 384-dimensional vectors that strike an exceptional balance between speed and semantic accuracy in English prose. Crucially, running embeddings locally removes any reliance on external API keys, rate limits, or per-token network costs.</p>
 
-            <p>In the current architecture, the LangChain documents are ingested directly into a Chroma vector store on
-                startup:</p>
+            <p>In the current architecture, the LangChain documents are ingested directly into a Chroma vector store on startup:</p>
 
             <pre>
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -448,35 +419,24 @@ db_books = Chroma.from_documents(
 
             <h2>Two-Stage recommendation: Vector retrieval + Pandas filtering</h2>
 
-            <p>To handle category classification (Fiction vs. Non-Fiction) and emotion filtering (Joy, Surprise, Anger,
-                Fear, Sadness) without bogging down vector similarity math, NextRead utilizes a two-stage retrieval
-                pipeline.</p>
+            <p>To handle category classification (Fiction vs. Non-Fiction) and emotion filtering (Joy, Surprise, Anger, Fear, Sadness) without bogging down vector similarity math, NextRead utilizes a two-stage retrieval pipeline.</p>
 
             <div class="steps">
                 <div class="step">
                     <div class="step-num">1</div>
-                    <div class="step-body"><strong>Semantic similarity search</strong><span>The user's query is
-                            embedded, and Chroma performs a similarity search (`k=50`) to cast a wide net for books that
-                            match the thematic intent.</span></div>
+                    <div class="step-body"><strong>Semantic similarity search</strong><span>The user's query is embedded, and Chroma performs a similarity search (`k=50`) to cast a wide net for books that match the thematic intent.</span></div>
                 </div>
                 <div class="step">
                     <div class="step-num">2</div>
-                    <div class="step-body"><strong>ISBN extraction & DataFrame mapping</strong><span>We extract the
-                            ISBN13 from the retrieved text chunks and filter our core Pandas DataFrame
-                            (<code>books_with_emotions.csv</code>) down to these top semantic matches.</span></div>
+                    <div class="step-body"><strong>ISBN extraction & DataFrame mapping</strong><span>We extract the ISBN13 from the retrieved text chunks and filter our core Pandas DataFrame (<code>books_with_emotions.csv</code>) down to these top semantic matches.</span></div>
                 </div>
                 <div class="step">
                     <div class="step-num">3</div>
-                    <div class="step-body"><strong>Category filtering</strong><span>If a specific category is selected,
-                            Pandas slices the retrieved candidates where
-                            <code>simple_categories == category</code>.</span></div>
+                    <div class="step-body"><strong>Category filtering</strong><span>If a specific category is selected, Pandas slices the retrieved candidates where <code>simple_categories == category</code>.</span></div>
                 </div>
                 <div class="step">
                     <div class="step-num">4</div>
-                    <div class="step-body"><strong>Emotional tone sorting</strong><span>If an emotional tone is
-                            requested (e.g., "Happy", "Suspenseful", "Sad"), we sort the filtered DataFrame by the
-                            pre-calculated sentiment scores (<code>joy</code>, <code>fear</code>, <code>sadness</code>,
-                            etc.) before returning the top 16 books.</span></div>
+                    <div class="step-body"><strong>Emotional tone sorting</strong><span>If an emotional tone is requested (e.g., "Happy", "Suspenseful", "Sad"), we sort the filtered DataFrame by the pre-calculated sentiment scores (<code>joy</code>, <code>fear</code>, <code>sadness</code>, etc.) before returning the top 16 books.</span></div>
                 </div>
             </div>
 
@@ -514,14 +474,9 @@ def retrieve_semantic_recommendations(
 
             <h2>A modern, glassmorphism UI with Gradio Blocks</h2>
 
-            <p>Rather than settling for a standard, out-of-the-box interface, I built the frontend using **Gradio
-                Blocks** with a custom Glassmorphism theme. To make the discovery experience engaging from the second
-                the app opens, I injected custom CSS for hover-lift card animations, modern raised buttons, and a
-                responsive layout.</p>
+            <p>Rather than settling for a standard, out-of-the-box interface, I built the frontend using **Gradio Blocks** with a custom Glassmorphism theme. To make the discovery experience engaging from the second the app opens, I injected custom CSS for hover-lift card animations, modern raised buttons, and a responsive layout.</p>
 
-            <p>The dashboard also features an automatic **Featured Books** carousel that dynamically samples 12
-                randomized recommendations whenever you launch or refresh the page, ensuring users always have immediate
-                inspiration:</p>
+            <p>The dashboard also features an automatic **Featured Books** carousel that dynamically samples 12 randomized recommendations whenever you launch or refresh the page, ensuring users always have immediate inspiration:</p>
 
             <pre>
 with gr.Blocks(theme=gr.themes.Glass(), css="""...custom CSS...""") as dashboard:
@@ -539,67 +494,37 @@ with gr.Blocks(theme=gr.themes.Glass(), css="""...custom CSS...""") as dashboard
         tone_dropdown = gr.Dropdown(choices=tones, label="🎭 Select an emotional tone:", value="All")
 </pre>
 
-            <h2>Optimization roadmap: What can be done to improve speed</h2>
+            <h2>Performance decisions: what I shipped and what's next</h2>
 
-            <p>While the current architecture is functional and highly responsive for a prototype, treating data
-                engineering as an evolving discipline means constantly looking for bottlenecks. Here are the key
-                performance upgrades planned to 10x the application's speed and scalability:</p>
+            <p>Two of the three optimizations below are already in production. I'm documenting them here not as a wishlist but as an engineering record — each one targets a specific bottleneck with a concrete fix and a measurable outcome.</p>
 
             <div class="war-story">
-                <div class="ws-label">Upgrade 01</div>
+                <div class="ws-label">Upgrade 01 — Shipped</div>
                 <h3>Generating the Chroma DB persistently to eliminate startup overhead</h3>
-                <p>Currently, `app.py` reads `tagged_description.txt` and generates the Chroma vector store on
-                    application startup. While creating an in-memory client works cleanly for small datasets, building
-                    vectors on load introduces unnecessary cold-start latency.</p>
-                <p>By updating the ingestion script to generate the Chroma DB persistently using
-                    `chromadb.PersistentClient(path="./chroma_db")`, we can compute embeddings exactly once and store
-                    them to disk. Updating `app.py` to match and load this persistent directory will eliminate
-                    cold-start embedding overhead entirely—dropping app launch times from minutes down to under 2
-                    seconds!</p>
-                <div class="lesson"><strong>Performance Takeaway:</strong> Never recompute what you can persist. Moving
-                    embedding generation from runtime to an offline ingestion build step is the single highest-leverage
-                    optimization for vector search applications.</div>
+                <p>The original architecture read <code>tagged_description.txt</code> and generated the Chroma vector store fresh on every application startup. For a corpus of 7,000+ books, this meant the embedding model had to process every description at launch, introducing several minutes of cold-start latency before the first user interaction.</p>
+                <p>I decoupled embedding generation from application startup entirely by writing a standalone offline ingestion script — <code>build_vector_db.py</code>. This script reads the dataset once, computes all embeddings, and writes them to disk using <code>Chroma(persist_directory="./chroma_db")</code>. <code>app.py</code> now simply calls <code>Chroma(persist_directory=persist_directory, embedding_function=embeddings)</code> on boot, loading the pre-computed vectors from disk in under two seconds. Cold-start latency was eliminated entirely.</p>
+                <div class="lesson"><strong>Takeaway:</strong> Never recompute what you can persist. Moving embedding generation from runtime to an offline build step is the single highest-leverage optimization in any vector search application — the vector store becomes infrastructure, not startup cost.</div>
             </div>
 
             <div class="war-story">
-                <div class="ws-label">Upgrade 02</div>
-                <h3>Injecting metadata directly into LangChain Document objects for pre-retrieval filtering</h3>
-                <p>In our current two-stage architecture, the app retrieves the top 50 semantic matches via cosine
-                    similarity and then uses Pandas DataFrames to slice by category and sort by emotion scores
-                    post-retrieval. If a user searches for a rare niche within "Non-Fiction," post-retrieval filtering
-                    risks filtering out too many candidates from those top 50.</p>
-                <p>An excellent performance upgrade is injecting our zero-shot genre classifications and sentiment
-                    scores directly into the LangChain `Document` metadata dicts during ingestion. Once stored in
-                    Chroma, we can utilize native `where` metadata filters at query time (`filter={"category":
-                    selected_category}`). Chroma evaluates metadata filters *before* computing vector distance, meaning
-                    the vector search space is instantly cut in half and 100% of returned results are guaranteed to
-                    match the user's category.</p>
-                <div class="lesson"><strong>Performance Takeaway:</strong> Pre-retrieval filtering beats post-retrieval
-                    slicing. Think of document metadata as pre-computed index filters—the more structured context you
-                    inject into LangChain objects at ingestion, the faster and more precise your query-time retrieval
-                    becomes.</div>
+                <div class="ws-label">Upgrade 02 — Shipped</div>
+                <h3>Injecting metadata directly into LangChain Documents for pre-retrieval filtering</h3>
+                <p>The original two-stage pipeline retrieved the top 50 semantic matches by cosine similarity, then used Pandas to slice by category and sort by emotion scores after the fact. For niche categories with sparse coverage in the corpus, post-retrieval filtering would sometimes exhaust the candidate pool, returning fewer results than expected.</p>
+                <p>I resolved this by injecting the zero-shot genre classification and all five sentiment scores (<code>joy</code>, <code>fear</code>, <code>sadness</code>, <code>anger</code>, <code>surprise</code>) directly into each LangChain <code>Document</code>'s metadata dict at ingestion time. With this metadata stored natively in Chroma, the app can now pass a <code>filter={"category": selected_category}</code> argument to <code>similarity_search_with_score</code>. Chroma evaluates the filter <em>before</em> computing vector distances, meaning 100% of returned candidates are guaranteed to match the selected category — no wasted retrieval budget.</p>
+                <div class="lesson"><strong>Takeaway:</strong> Pre-retrieval filtering beats post-retrieval slicing every time. Think of document metadata as pre-computed index partitions — the more structured context you inject at ingestion, the more precise and efficient your query-time retrieval becomes.</div>
             </div>
 
             <div class="war-story">
-                <div class="ws-label">Upgrade 03</div>
-                <h3>Integrating a Cross-Encoder Re-ranking layer</h3>
-                <p>Cosine similarity in embedding space is a brilliant first-pass retriever, but bi-encoders compress
-                    entire book descriptions into a single pooled vector, occasionally missing subtle nuances in writing
-                    style or narrative pacing.</p>
-                <p>A planned architectural upgrade is introducing a lightweight cross-encoder model (such as
-                    `cross-encoder/ms-marco-MiniLM-L-6-v2`) as a second-stage re-ranker. By fetching the top 30
-                    candidates from Chroma and scoring the `(user_query, book_description)` pairs jointly, we can
-                    achieve production-grade retrieval precision without sacrificing the low latency of vector search.
-                </p>
-                <div class="lesson"><strong>Performance Takeaway:</strong> The retrieval-then-rerank design pattern is
-                    the gold standard for semantic search—using fast vector similarity for high recall, followed by a
-                    precise cross-encoder for sharp relevance scoring.</div>
+                <div class="ws-label">Upgrade 03 — Planned</div>
+                <h3>Integrating a Cross-Encoder Re-ranking layer for production-grade precision</h3>
+                <p>Cosine similarity in embedding space is an excellent first-pass retriever, but bi-encoders compress entire book descriptions into a single pooled vector, which can occasionally miss subtle nuances in writing style, narrative pacing, or thematic tone that only emerge when the query and document are read together.</p>
+                <p>The planned upgrade is introducing a lightweight cross-encoder model — such as <code>cross-encoder/ms-marco-MiniLM-L-6-v2</code> — as a second-stage re-ranker. The architecture would work in two passes: Chroma fetches the top 30 candidates at high speed using vector similarity for broad recall, then the cross-encoder scores each <code>(user_query, book_description)</code> pair jointly, producing a much sharper relevance ranking before the final 16 results are returned. The latency overhead is minimal since cross-encoders only process a small candidate set, not the full corpus.</p>
+                <div class="lesson"><strong>Takeaway:</strong> The retrieval-then-rerank pattern is the gold standard for semantic search in production — use fast vector similarity for high recall, then a precise cross-encoder to cut noise. Separating the two concerns lets you tune each independently without sacrificing either speed or accuracy.</div>
             </div>
 
             <div class="links">
                 <a class="link-btn primary" href="https://huggingface.co/spaces/ArshAnsari/NextRead" target="_blank"><i class="ti ti-external-link" aria-hidden="true" style="font-size:15px"></i> Live demo</a>
-                <a class="link-btn" href="https://github.com/ArshhAnsari/NextRead" target="_blank"><i
-                        class="ti ti-brand-github" aria-hidden="true" style="font-size:15px"></i> Source code</a>
+                <a class="link-btn" href="https://github.com/ArshhAnsari/NextRead" target="_blank"><i class="ti ti-brand-github" aria-hidden="true" style="font-size:15px"></i> Source code</a>
             </div>
 
         </article>
