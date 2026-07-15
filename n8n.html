@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en" id="root" class="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>n8n Social Posting Agent Case Study — Mohd Arsh</title>
+    <meta name="description"
+        content="n8n Social Posting Agent: a headless social media publishing engine with human-in-the-loop Telegram control. A technical case study by Mohd Arsh.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/about.css">
+    <link rel="icon" type="image/png" href="assets/images/arsh.webp">
+    <style>
+        :root {
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --font-mono: 'DM Mono', monospace;
+            --color-text-primary: var(--ink);
+            --color-text-secondary: var(--mid);
+            --color-border-secondary: var(--faint);
+            --color-border-tertiary: var(--rule);
+            --color-background-primary: var(--bg);
+            --color-background-secondary: var(--tag-bg);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .art {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 5rem 1.5rem 6rem;
+            font-family: var(--font-sans);
+            color: var(--color-text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .eyebrow {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--color-text-secondary);
+            margin-bottom: .5rem;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 500;
+            margin: 3rem 0 1rem;
+            padding-top: 1.5rem;
+            border-top: .5px solid var(--color-border-tertiary);
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 500;
+            margin: 1.5rem 0 .5rem;
+            color: var(--color-text-primary);
+        }
+
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--color-text-secondary);
+        }
+
+        p strong {
+            color: var(--color-text-primary);
+            font-weight: 500;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+            margin: 1.5rem 0 2.5rem;
+        }
+
+        .badge {
+            font-size: 12px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            border: .5px solid var(--color-border-secondary);
+            color: var(--color-text-secondary);
+            background: var(--color-background-secondary);
+        }
+
+        .badge.orange {
+            background: #FFF0EA;
+            color: #D43F00;
+            border-color: #FFD4C2;
+        }
+
+        html.dark .badge.orange {
+            background: rgba(224, 80, 16, 0.15);
+            color: #FF9E79;
+            border-color: rgba(255, 158, 121, 0.35);
+        }
+
+        .divider {
+            height: .5px;
+            background: var(--color-border-tertiary);
+            margin: 2.5rem 0;
+        }
+
+        pre {
+            background: var(--color-background-secondary);
+            border: .5px solid var(--color-border-tertiary);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+        }
+
+        code {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            background: var(--color-background-secondary);
+            padding: 1px 5px;
+            border-radius: 4px;
+            color: var(--color-text-primary);
+        }
+
+        .callout {
+            border-left: 2px solid #E05010;
+            background: var(--color-background-secondary);
+            padding: .875rem 1.125rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 15px;
+            color: var(--color-text-primary);
+        }
+
+        .steps {
+            counter-reset: step;
+            margin: 1.5rem 0;
+        }
+
+        .step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            align-items: flex-start;
+        }
+
+        .step-num {
+            flex-shrink: 0;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #FFF0EA;
+            color: #D43F00;
+            font-size: 13px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2px;
+        }
+
+        html.dark .step-num {
+            background: rgba(224, 80, 16, 0.15);
+            color: #FF9E79;
+        }
+
+        .step-body {
+            flex: 1;
+        }
+
+        .step-body strong {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 2px;
+            color: var(--color-text-primary);
+        }
+
+        .step-body span {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        .war-story {
+            border: .5px solid var(--color-border-secondary);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin: 2rem 0;
+            background: rgba(var(--ink), 0.01);
+        }
+
+        .war-story .ws-label {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--color-text-secondary);
+            margin-bottom: .5rem;
+        }
+
+        .war-story h3 {
+            margin: .25rem 0 .75rem;
+            font-size: 16px;
+        }
+
+        .lesson {
+            margin-top: 1rem;
+            padding: .75rem 1rem;
+            background: var(--color-background-secondary);
+            border-radius: 8px;
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        .lesson strong {
+            color: var(--color-text-primary);
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-card {
+            background: var(--color-background-secondary);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid var(--color-border-tertiary);
+        }
+
+        .stat-card .num {
+            font-size: 24px;
+            font-weight: 500;
+            color: var(--color-text-primary);
+        }
+
+        .stat-card .lbl {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            margin-top: 4px;
+        }
+
+        .links {
+            display: flex;
+            gap: .75rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            padding: 8px 18px;
+            border-radius: 8px;
+            border: 1px solid var(--color-border-secondary);
+            color: var(--color-text-primary);
+            text-decoration: none;
+            background: var(--color-background-primary);
+            transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .link-btn:hover {
+            background: var(--color-background-secondary);
+            color: var(--color-text-primary);
+        }
+
+        .link-btn.primary {
+            background: #FFF0EA;
+            border-color: #FFD4C2;
+            color: #D43F00;
+        }
+
+        .link-btn.primary:hover {
+            background: #FFE4D6;
+        }
+
+        html.dark .link-btn.primary {
+            background: rgba(224, 80, 16, 0.15);
+            border-color: rgba(255, 158, 121, 0.35);
+            color: #FF9E79;
+        }
+
+        html.dark .link-btn.primary:hover {
+            background: rgba(224, 80, 16, 0.25);
+        }
+
+        /* Custom image card layout */
+        .img-container {
+            border: 1px solid var(--color-border-tertiary);
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 2rem 0;
+            background: var(--color-background-secondary);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .img-container:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .img-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .img-caption {
+            padding: 0.75rem 1rem;
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            border-top: 1px solid var(--color-border-tertiary);
+            text-align: center;
+            background: rgba(var(--ink), 0.01);
+        }
+
+        @media(max-width:500px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+</head>
+
+<body>
+
+    <nav id="site-nav"
+        style="position:fixed;top:0;left:0;right:0;z-index:100;height:52px;border-bottom:1px solid var(--rule);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background-color:color-mix(in srgb, var(--bg) 85%, transparent);display:flex;align-items:center">
+        <div
+            style="width:100%; max-width:720px; margin:0 auto; padding:0 1.5rem; display:flex; align-items:center; justify-content:space-between;">
+            <a style="font-size:13px;font-weight:500;color:var(--mid);text-decoration:none;transition:color 0.15s ease;display:flex;align-items:center;gap:6px;"
+                href="index.html#work">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                All work
+            </a>
+            <button class="dark-toggle" onclick="toggleDark()" aria-label="Toggle dark mode"
+                style="border:none;cursor:pointer;color:var(--mid);line-height:1;padding:6px 8px;display:flex;align-items:center;border-radius:8px;background:none;transition:color .15s, background .15s;position:relative;">
+                <svg id="dark-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401">
+                    </path>
+                </svg>
+                <span class="toggle-tooltip" id="dark-label"
+                    style="position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) scale(0.95);transform-origin:top center;white-space:nowrap;font-size:10px;font-weight:400;letter-spacing:0.12em;color:var(--mid);background:var(--bg);border:1px solid var(--rule);border-radius:6px;padding:4px 8px;pointer-events:none;opacity:0;transition:opacity .1s, transform .1s;">SWITCH
+                    TO DARK MODE</span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <article class="art">
+            <p class="eyebrow">Workflow Architecture · n8n Social Posting Agent</p>
+            <h1>Building a headless social media engine with human-in-the-loop Telegram control</h1>
+
+            <div class="meta">
+                <span class="badge">Solo build</span>
+                <span class="badge">In production</span>
+                <span class="badge orange">n8n Workflow Engine</span>
+                <span class="badge orange">Telegram Bot API</span>
+                <span class="badge orange">OpenAI gpt-4o-mini</span>
+                <span class="badge orange">Blotato API</span>
+                <span class="badge orange">Google Sheets</span>
+            </div>
+
+            <p>Managing social media distribution across seven different platforms is a masterclass in friction. TikTok
+                and X require snappy, compact text under strict character limits; LinkedIn and Instagram reward
+                structured, long-form storytelling; YouTube Shorts demands curiosity-driven, punchy titles to capture
+                click-through rates. Attempting to manage this manually results in hours lost to copy-pasting and
+                formatting.</p>
+
+            <p>Most automation tools force a binary choice: either pay for expensive, rigid SaaS scheduling suites, or
+                build headless scripts that broadcast content blindly without manual quality control. The posting agent
+                solves
+                this by decoupling scheduling from publishing. It uses Google Sheets as a stateful ledger, LangChain for
+                real-time content adaptation, and a dual-workflow Telegram architecture that puts an interactive
+                approval gate directly in your chat app.</p>
+
+            <div class="two-col">
+                <div class="stat-card">
+                    <div class="num">7</div>
+                    <div class="lbl">concurrent target platforms</div>
+                </div>
+                <div class="stat-card">
+                    <div class="num">0</div>
+                    <div class="lbl">custom web dashboards built</div>
+                </div>
+                <div class="stat-card">
+                    <div class="num">15m</div>
+                    <div class="lbl">automated cron polling cycle</div>
+                </div>
+                <div class="stat-card">
+                    <div class="num">100%</div>
+                    <div class="lbl">pre-publish human verification</div>
+                </div>
+            </div>
+
+            <h2>The architecture — stateful orchestration without a database</h2>
+
+            <p>Instead of standing up a dedicated PostgreSQL instance and a custom React frontend just to manage content
+                queues, the posting agent leverages Google Sheets as an accessible, multi-user CRUD dashboard. Editors
+                drop
+                video links, draft captions, and select target platforms using simple checkboxes.</p>
+
+            <div class="img-container">
+                <img src="assets/images/n8n_workflow.webp" alt="n8n Social Posting Agent Workflow Architecture"
+                    loading="lazy">
+                <div class="img-caption">
+                    <i class="ti ti-chart-structure" style="vertical-align: middle; margin-right: 4px;"></i>
+                    Workflow architecture showing the dual-workflow setup (polling, Telegram approval loop, and
+                    multi-platform publishing)
+                </div>
+            </div>
+
+            <p>An automated cron trigger polls the sheet every 15 minutes, filtering specifically for rows where
+                <code>Status == 'Ready To Post'</code> and the timestamp has matured. Once picked up, the workflow
+                transitions the row state to prevent duplicate processing and writes critical execution
+                metadata—specifically the instance <code>Exec_ID</code> and the asynchronous
+                <code>Resume_URL</code>—back into the sheet.
+            </p>
+
+            <pre>
+// Filter By Schedule (n8n Code Node)
+const items = $input.all();
+const now = new Date();
+
+const valid = items.filter(item => {
+  const scheduledTime = item.json.Scheduled_At;
+  if (!scheduledTime || scheduledTime.toString().trim() === '') return true;
+  return new Date(scheduledTime) <= now;
+});
+
+if (!valid.length) return [];
+return [valid[0]]; // Process strictly one row per execution tick to guarantee idempotency
+</pre>
+
+            <div class="callout">
+                <p>Storing the <code>Resume_URL</code> directly in the spreadsheet ledger transforms a static row into
+                    an addressable state machine. External systems can inspect the sheet, locate the webhook endpoint
+                    for a paused post, and wake up sleeping execution threads on demand.</p>
+            </div>
+
+            <h2>Human-in-the-loop control via asynchronous Telegram webhooks</h2>
+
+            <p>True automation requires knowing when <em>not</em> to automate. Rather than broadcasting unverified
+                AI-generated content, the Main Workflow halts execution immediately after preparing the content
+                payloads. It constructs a rich markdown preview of the captions, platform targets, and AI-optimized
+                titles, pushes it to an authorized Telegram chat, and enters an asynchronous <code>Wait Approval</code>
+                state.</p>
+
+            <p>To handle interactions without polling or timeouts, a second decoupled workflow—the **Telegram
+                Listener**—acts as a persistent command gateway:</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-body"><strong>Secure Command Parsing</strong><span>The listener intercepts incoming
+                            Telegram messages, verifying that the <code>chatId</code> matches the admin authorization
+                            whitelist before processing regex command strings.</span></div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-body"><strong>Ledger Lookup via Execution ID</strong><span>Commands like
+                            <code>/edit_title_abc123 New Title</code> extract the alphanumeric <code>execId</code>,
+                            performing a lookup against the Google Sheet to locate the exact row currently paused in
+                            execution.</span></div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-body"><strong>Scratchpad Draft Updates</strong><span>If an edit command is
+                            detected, the routing switch writes the payload to dedicated temporary draft columns (e.g.,
+                            <code>Title_Draft</code>, <code>Caption_Long_Draft</code>) and confirms the save via
+                            chat.</span></div>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <div class="step-body"><strong>Asynchronous Wake-Up Call</strong><span>When the admin issues
+                            `/approve_[execId]`, the listener reads the final draft columns and dispatches an HTTP POST
+                            request containing the consolidated payload directly to the paused workflow's
+                            <code>Resume_URL</code>.</span></div>
+                </div>
+            </div>
+
+            <pre>
+// Command Parser — Router & Security Layer
+const ADMIN_CHAT_ID = 'YOUR_TELEGRAM_CHAT_ID';
+const msg = $input.first().json;
+const chatId = String(msg.message?.chat?.id || '');
+const text   = (msg.message?.text || '').trim();
+
+if (chatId !== ADMIN_CHAT_ID) return []; // Drop unauthorized traffic silently
+
+// Match pattern: /command_execId optional_payload
+const re = /^\/(approve|reject|edit_title|edit_long|edit_short)_([a-zA-Z0-9]+)(?:\s+([\s\S]+))?$/;
+const match = text.match(re);
+
+if (!match) return [{ json: { command: 'unknown', execId: '', payload: '', chatId } }];
+
+return [{ json: {
+  command: match[1],        // approve | reject | edit_title | edit_long | edit_short
+  execId:  match[2],        // Unique workflow execution identifier
+  payload: (match[3] || '').trim(),
+  chatId
+}}];
+</pre>
+
+            <h2>Content adaptation & multi-platform fan-out</h2>
+
+            <p>Once the wake-up webhook fires, the Main Workflow resumes execution. If the action was a rejection, it
+                marks the ledger as <code>Rejected</code> and terminates cleanly. If approved, it dynamically overwrites
+                the baseline content with any custom drafts submitted during the review pause, clears the scratchpad
+                columns, and begins media syndication.</p>
+
+            <p>To satisfy platform-specific formatting rules without creating duplicate database records, content
+                adaptation happens on the fly during data preparation:</p>
+
+            <ul>
+                <li style="margin-bottom: 0.5rem; color: var(--color-text-secondary);"><strong
+                        style="color: var(--color-text-primary);">AI Title Generation:</strong> If the YouTube flag is
+                    checked, the workflow feeds the base title into a LangChain OpenAI node running
+                    <code>gpt-4o-mini</code> with a strict system prompt designed to maximize curiosity while capping
+                    output at 100 characters.
+                </li>
+                <li style="margin-bottom: 0.5rem; color: var(--color-text-secondary);"><strong
+                        style="color: var(--color-text-primary);">Intelligent Truncation:</strong> The system maps
+                    full-length storytelling copy to Instagram, Facebook, and LinkedIn, while automatically generating a
+                    fallback 280-character substring for TikTok, Threads, and X if an explicit short caption wasn't
+                    provided.</li>
+                <li style="margin-bottom: 1.25rem; color: var(--color-text-secondary);"><strong
+                        style="color: var(--color-text-primary);">Concurrent API Syndication:</strong> A Blotato media
+                    node downloads the video binary directly from Google Drive using the extracted file ID, hosting it
+                    on a CDN to dispatch parallel API requests across all selected social networks.</li>
+            </ul>
+
+            <h2>Engineering War Stories: what broke and how it was fixed</h2>
+
+            <div class="war-story">
+                <div class="ws-label">Upgrade 01 — Shipped</div>
+                <h3>Eliminating webhook race conditions using scratchpad draft columns</h3>
+                <p>In the initial prototype, when an admin sent an edit command via Telegram, the listener attempted to
+                    directly update the primary content columns (e.g., <code>Title</code>, <code>Caption_Long</code>) in
+                    the sheet while the main workflow was suspended. However, if an admin sent two rapid edits followed
+                    immediately by `/approve`, the main workflow would occasionally resume and read the sheet before
+                    Google's API had fully committed the second write operation, publishing stale content.</p>
+                <p>I resolved this by decoupling real-time edits from permanent records. The Telegram Listener now
+                    writes exclusively to isolated draft columns (<code>Title_Draft</code>,
+                    <code>Caption_Long_Draft</code>). When `/approve` is triggered, the listener reads these draft
+                    values and bundles them directly into the JSON body of the resume POST webhook. The Main Workflow
+                    relies entirely on the webhook payload to apply edits in memory, completely bypassing the need for a
+                    synchronous, pre-publish sheet read.
+                </p>
+                <div class="lesson"><strong>Takeaway:</strong> Never rely on external database read-after-write
+                    consistency to pass state across concurrent asynchronous workflows. When waking up a suspended
+                    thread, inject the modified state directly into the resume payload.</div>
+            </div>
+
+            <div class="war-story">
+                <div class="ws-label">Upgrade 02 — Shipped</div>
+                <h3>Isolating platform failures to prevent cascade crashes during syndication</h3>
+                <p>Social media APIs are notoriously unstable. Early in testing, a temporary token expiration on the X
+                    (Twitter) API would throw an unhandled exception during the fan-out phase. Because the publishing
+                    nodes were executed sequentially without error containment, an X API failure would immediately abort
+                    the entire execution thread, preventing the video from being published to YouTube or LinkedIn even
+                    though those credentials were perfectly valid.</p>
+                <p>I restructured the fan-out layer using isolated conditional branches paired with Blotato nodes
+                    configured with explicit error tolerance (<code>onError: "continueErrorOutput"</code> and automated
+                    3x retry policies with 30-second exponential backoffs). Each platform branch now operates as a
+                    closed loop that writes its own localized status back to the sheet (e.g.,
+                    <code>Instagram_Log: "✅ Success"</code> vs <code>X_Log: "❌ Failed"</code>) and triggers a targeted
+                    Telegram alert if all retries fail, allowing the rest of the syndication matrix to finish
+                    uninterrupted.
+                </p>
+                <div class="lesson"><strong>Takeaway:</strong> In multi-tenant or multi-platform distribution
+                    architectures, treat every external integration as a guaranteed failure point. Isolate execution
+                    branches so partial outages degrade gracefully rather than causing system-wide aborts.</div>
+            </div>
+
+            <div class="war-story">
+                <div class="ws-label">Upgrade 03 — Planned</div>
+                <h3>Replacing cron polling with event-driven database triggers</h3>
+                <p>While polling a Google Sheet on a 15-minute interval is highly resilient and requires zero
+                    infrastructure maintenance, it introduces an artificial latency floor. A video scheduled for 2:01 PM
+                    will sit idle in the ledger until the cron scheduler triggers at 2:15 PM.</p>
+                <p>The planned architectural upgrade involves migrating the primary ledger from Google Sheets to a
+                    Supabase PostgreSQL instance. By leveraging Supabase Database Webhooks, the system will listen for
+                    <code>INSERT</code> or <code>UPDATE</code> events where <code>status == 'Ready To Post'</code>,
+                    dispatching the execution payload immediately to the n8n webhook gateway. This removes the cron
+                    scheduler entirely, reducing publish latency from up to 15 minutes down to sub-second real-time
+                    execution while cutting background compute cycles by over 90%.
+                </p>
+                <div class="lesson"><strong>Takeaway:</strong> Polling is an excellent starting point for stateless
+                    prototypes, but event-driven architectures are mandatory for time-sensitive production scaling.
+                    Build with clean interfaces so storage layers can be swapped without rewriting business logic.</div>
+            </div>
+
+            <div class="links">
+                <a class="link-btn primary" href="https://github.com/ArshhAnsari/n8n-multiplatform-social-posting-agent"
+                    target="_blank"><i class="ti ti-brand-github" aria-hidden="true" style="font-size:15px"></i> Source
+                    code &amp;
+                    blueprints</a>
+            </div>
+
+        </article>
+    </main>
+
+    <footer>
+        <div class="page-wrapper footer-inner">
+            <span class="footer-txt">© 2026 Mohd Arsh</span>
+            <span class="footer-txt">Mumbai, India</span>
+        </div>
+    </footer>
+
+    <script src="assets/js/common.js"></script>
+</body>
+
+</html>
